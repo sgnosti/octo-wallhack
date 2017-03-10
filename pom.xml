@@ -22,29 +22,55 @@
 	</build>
 
 	<dependencies>
-
+	
+		<!-- SMACK -->
+		
+		<!-- Spark: Stream processing -->		
 		<dependency>
-			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-java</artifactId>
-			<version>0.9.0</version>
+		    <groupId>org.apache.spark</groupId>
+		    <artifactId>spark-streaming_2.11</artifactId>
+		    <version>2.1.0</version>
 		</dependency>
+		
+		<!-- Mesos: Software to manage compute clusters -->
 		<dependency>
-			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-clients</artifactId>
-			<version>0.9.0</version>
+		    <groupId>org.apache.mesos</groupId>
+		    <artifactId>mesos</artifactId>
+		    <version>1.1.1</version>
 		</dependency>
-
+		
+		<!-- Akka: Toolkit for building  message-driven applications based on actor framework -->
 		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-hdfs</artifactId>
-			<version>2.7.1</version>
+		    <groupId>com.typesafe.akka</groupId>
+		    <artifactId>akka-actor_2.11</artifactId>
+		    <version>2.4.17</version>
 		</dependency>
-
+		
+		<!-- Cassandra: NoSQL database -->
 		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-compress</artifactId>
-			<version>1.9</version>
+		    <groupId>org.apache.cassandra</groupId>
+		    <artifactId>cassandra-all</artifactId>
+		    <version>3.10</version>
 		</dependency>
+		
+		<!-- Kafka: Distributed stream processing (monitoring, log aggregation, event sourcing...) -->
+		<dependency>
+		    <groupId>org.apache.kafka</groupId>
+		    <artifactId>kafka_2.11</artifactId>
+		    <version>0.10.2.0</version>
+		</dependency>
+		
+		<!-- 
+		Others:
+			- Apache Hadoop: framework that allows for the distributed processing of large data sets across clusters of computers using simple programming models
+			- Apache Flink: Scalable Stream and Batch Data Processing
+			- Apache SAMOA is a distributed streaming machine learning (ML) framework
+			- Apache Beam: provides an advanced unified programming model, allowing you to implement batch and streaming data processing jobs that can run on any execution engine.
+			- Apache Mahout: A Scalable machine learning and data mining library.
+			- Apache ZooKeeper: A high-performance coordination service for distributed applications.
+			- Apache Hive: data warehouse infrastructure built on top of Hadoop for providing data summarization, query, and analysis
+			- Apache Pig: high-level language for expressing data analysis programs, coupled with infrastructure for evaluating these programs
+		 -->
 
 		<dependency>
 			<groupId>junit</groupId>
