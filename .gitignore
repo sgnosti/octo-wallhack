@@ -1,5 +1,4 @@
 
-
 *.class
 
 # Package Files #
@@ -31,4 +30,8 @@ bin/
 **/.project
 **/.classpath
 **/.settings/
+
+# twitter credentials
+twitter4j.properties
+
 
