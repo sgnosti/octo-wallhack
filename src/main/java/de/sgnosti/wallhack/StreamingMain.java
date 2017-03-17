@@ -19,7 +19,7 @@ public class StreamingMain {
 		// TwitterStream and calls these adequate listener methods continuously.
 		twitterStream.sample();
 
-		Thread.sleep(5000);
+		Thread.sleep(30000);
 		twitterStream.cleanUp();
 
 		LOGGER.info("Done");
