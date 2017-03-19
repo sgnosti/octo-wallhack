@@ -1,11 +1,12 @@
 package de.sgnosti.wallhack.integrationtest;
 
+import org.apache.kafka.clients.producer.KafkaProducer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Spy;
+import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,9 +24,10 @@ public class TweetConsumerIntegrationTest {
 	private static final long USER_ID = 293414972;
 
 	private final TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
+	@Mock
+	private KafkaProducer kafkaProducer;
 
-	@Spy
-	private final TweetConsumer tweetConsumer = new TweetConsumer();
+	private final TweetConsumer tweetConsumer = new TweetConsumer(kafkaProducer);
 
 	@Before
 	public void setUp() {

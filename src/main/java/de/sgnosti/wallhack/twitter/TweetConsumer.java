@@ -1,13 +1,11 @@
 package de.sgnosti.wallhack.twitter;
 
-import java.io.InputStream;
-import java.util.Properties;
-
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.sgnosti.wallhack.twitter.util.StatusParser;
 import twitter4j.StallWarning;
 import twitter4j.Status;
 import twitter4j.StatusDeletionNotice;
@@ -22,23 +20,15 @@ import twitter4j.TwitterStream;
  *
  */
 public class TweetConsumer implements StatusListener {
+	private static final Logger LOGGER = LoggerFactory.getLogger(TweetConsumer.class);
 	private static final String STATUS_KEY = "status";
-
 	private static final String TOPIC = "twitter";
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(TweetConsumer.class);
 
-	private final Properties properties;
 	private final KafkaProducer<String, String> kafkaProducer;
 
-	public TweetConsumer() {
-		properties = new Properties();
-		try (InputStream in = getClass().getClassLoader().getResourceAsStream("kafka.properties")) {
-			properties.load(in);
-		} catch (final Exception e) {
-			LOGGER.error("Error loading properties file", e);
-		}
-		kafkaProducer = new KafkaProducer<>(properties);
+	public TweetConsumer(KafkaProducer<String, String> kafkaProducer) {
+		this.kafkaProducer = kafkaProducer;
 	}
 
 	@Override
@@ -63,7 +53,7 @@ public class TweetConsumer implements StatusListener {
 
 	@Override
 	public void onStatus(Status arg0) {
-		LOGGER.trace("received status: {}", arg0);
+		LOGGER.trace("received status: {}", StatusParser.userAndText(arg0));
 		final ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC, STATUS_KEY, arg0.toString());
 		kafkaProducer.send(record);
 	}
