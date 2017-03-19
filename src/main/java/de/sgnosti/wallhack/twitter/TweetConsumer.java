@@ -15,12 +15,17 @@ import twitter4j.StatusListener;
 import twitter4j.TwitterStream;
 
 /**
- * A consumer of the messages received from the {@link TwitterStream}
+ * A consumer of the messages received from the {@link TwitterStream}. Each
+ * received status message will be sent to Kafka.
  * 
  * @author sgnosti
  *
  */
 public class TweetConsumer implements StatusListener {
+	private static final String STATUS_KEY = "status";
+
+	private static final String TOPIC = "twitter";
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(TweetConsumer.class);
 
 	private final Properties properties;
@@ -38,7 +43,7 @@ public class TweetConsumer implements StatusListener {
 
 	@Override
 	public void onException(Exception arg0) {
-		LOGGER.error(arg0.getMessage());
+		LOGGER.error(arg0.getMessage(), arg0);
 	}
 
 	@Override
@@ -59,7 +64,7 @@ public class TweetConsumer implements StatusListener {
 	@Override
 	public void onStatus(Status arg0) {
 		LOGGER.trace("received status: {}", arg0);
-		final ProducerRecord<String, String> record = new ProducerRecord<>("twitter", arg0.toString());
+		final ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC, STATUS_KEY, arg0.toString());
 		kafkaProducer.send(record);
 	}
 
