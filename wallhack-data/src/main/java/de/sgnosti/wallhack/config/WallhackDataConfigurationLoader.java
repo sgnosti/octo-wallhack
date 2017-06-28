@@ -12,8 +12,8 @@ import org.apache.commons.configuration2.ex.ConfigurationException;
  */
 public final class WallhackDataConfigurationLoader {
 
-	private static final String KAFKA_CONFIG_FILE = "kafka.properties";
-	private static final String TWITTER_CONFIG_FILE = "twitter4j.properties";
+	private static final String KAFKA_CONFIG_FILE = "kafka.config.file";
+	private static final String TWITTER_CONFIG_FILE = "twitter.config.file";
 	private static final String KAFKA_TOPIC_PROPERTY = "kafka.topic";
 	private static final String KAFKA_STATUS_KEY_PROPERTY = "kafka.status.key";
 	private static final String TWITTER_TRACKS_PROPERTY = "twitter.tracks";
