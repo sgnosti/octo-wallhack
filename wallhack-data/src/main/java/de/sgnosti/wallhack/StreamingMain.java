@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import de.sgnosti.wallhack.config.WallhackDataConfiguration;
 import de.sgnosti.wallhack.config.WallhackDataConfigurationLoader;
-import de.sgnosti.wallhack.reader.TweetConsumer;
+import de.sgnosti.wallhack.reader.TwitterStreamListener;
 import de.sgnosti.wallhack.writer.TwitterSink;
 import twitter4j.FilterQuery;
 import twitter4j.TwitterStream;
@@ -47,7 +47,7 @@ public class StreamingMain {
 
 		LOGGER.info("Starting twitter stream");
 		final TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
-		twitterStream.addListener(new TweetConsumer(kafkaProducer));
+		twitterStream.addListener(new TwitterStreamListener(config, kafkaProducer));
 
 		final FilterQuery query = new FilterQuery(
 				config.getTwitterTracks().toArray(new String[config.getTwitterTracks().size()]));

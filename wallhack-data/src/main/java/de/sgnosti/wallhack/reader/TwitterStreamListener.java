@@ -5,7 +5,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.sgnosti.wallhack.util.StatusParser;
+import de.sgnosti.wallhack.config.WallhackDataConfiguration;
 import twitter4j.StallWarning;
 import twitter4j.Status;
 import twitter4j.StatusDeletionNotice;
@@ -19,15 +19,14 @@ import twitter4j.TwitterStream;
  * @author sgnosti
  *
  */
-public class TweetConsumer implements StatusListener {
-	private static final Logger LOGGER = LoggerFactory.getLogger(TweetConsumer.class);
-	private static final String STATUS_KEY = "status";
-	private static final String TOPIC = "twitter";
-
+public class TwitterStreamListener implements StatusListener {
+	private static final Logger LOGGER = LoggerFactory.getLogger(TwitterStreamListener.class);
 
 	private final KafkaProducer<String, String> kafkaProducer;
+	private final WallhackDataConfiguration config;
 
-	public TweetConsumer(KafkaProducer<String, String> kafkaProducer) {
+	public TwitterStreamListener(WallhackDataConfiguration config, KafkaProducer<String, String> kafkaProducer) {
+		this.config = config;
 		this.kafkaProducer = kafkaProducer;
 	}
 
@@ -53,8 +52,9 @@ public class TweetConsumer implements StatusListener {
 
 	@Override
 	public void onStatus(Status arg0) {
-		LOGGER.trace("received status: {}", StatusParser.userAndText(arg0));
-		final ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC, STATUS_KEY, arg0.toString());
+		LOGGER.trace("received status: {}", arg0);
+		final ProducerRecord<String, String> record = new ProducerRecord<>(config.getKafkaTopic(),
+				config.getKafkaStatusKey(), arg0.toString());
 		kafkaProducer.send(record);
 	}
 

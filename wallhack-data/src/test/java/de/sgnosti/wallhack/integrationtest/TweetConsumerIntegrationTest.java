@@ -11,7 +11,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.sgnosti.wallhack.reader.TweetConsumer;
+import de.sgnosti.wallhack.reader.TwitterStreamListener;
 import twitter4j.FilterQuery;
 import twitter4j.TwitterStream;
 import twitter4j.TwitterStreamFactory;
@@ -27,7 +27,7 @@ public class TweetConsumerIntegrationTest {
 	@Mock
 	private KafkaProducer kafkaProducer;
 
-	private final TweetConsumer tweetConsumer = new TweetConsumer(kafkaProducer);
+	private final TwitterStreamListener tweetConsumer = new TwitterStreamListener(kafkaProducer);
 
 	@Before
 	public void setUp() {
