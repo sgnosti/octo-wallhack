@@ -22,10 +22,10 @@ import twitter4j.TwitterStream;
 public class TwitterStreamListener implements StatusListener {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TwitterStreamListener.class);
 
-	private final KafkaProducer<String, String> kafkaProducer;
+	private final KafkaProducer<String, Status> kafkaProducer;
 	private final WallhackDataConfiguration config;
 
-	public TwitterStreamListener(WallhackDataConfiguration config, KafkaProducer<String, String> kafkaProducer) {
+	public TwitterStreamListener(WallhackDataConfiguration config, KafkaProducer<String, Status> kafkaProducer) {
 		this.config = config;
 		this.kafkaProducer = kafkaProducer;
 	}
@@ -53,8 +53,8 @@ public class TwitterStreamListener implements StatusListener {
 	@Override
 	public void onStatus(Status arg0) {
 		LOGGER.trace("received status: {}", arg0);
-		final ProducerRecord<String, String> record = new ProducerRecord<>(config.getKafkaTopic(),
-				config.getKafkaStatusKey(), arg0.toString());
+		final ProducerRecord<String, Status> record = new ProducerRecord<>(config.getKafkaTopic(),
+				config.getKafkaStatusKey(), arg0);
 		kafkaProducer.send(record);
 	}
 

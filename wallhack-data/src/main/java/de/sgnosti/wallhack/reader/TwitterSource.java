@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import de.sgnosti.wallhack.config.WallhackDataConfiguration;
 import twitter4j.FilterQuery;
+import twitter4j.Status;
 import twitter4j.TwitterStream;
 import twitter4j.TwitterStreamFactory;
 
@@ -14,11 +15,11 @@ public class TwitterSource {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TwitterSource.class);
 
 	private final WallhackDataConfiguration config;
-	private final KafkaProducer<String, String> kafkaProducer;
+	private final KafkaProducer<String, Status> kafkaProducer;
 
 	private TwitterStream twitterStream;
 
-	public TwitterSource(WallhackDataConfiguration config, KafkaProducer<String, String> kafkaProducer) {
+	public TwitterSource(WallhackDataConfiguration config, KafkaProducer<String, Status> kafkaProducer) {
 		this.config = config;
 		this.kafkaProducer = kafkaProducer;
 	}

@@ -5,13 +5,16 @@ import java.util.Properties;
 
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.common.serialization.StringSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import de.sgnosti.wallhack.config.WallhackDataConfiguration;
 import de.sgnosti.wallhack.config.WallhackDataConfigurationLoader;
 import de.sgnosti.wallhack.reader.TwitterSource;
 import de.sgnosti.wallhack.writer.TwitterSink;
+import twitter4j.Status;
 
 public class StreamingMain {
 
@@ -39,7 +42,8 @@ public class StreamingMain {
 		twitterSink.start();
 
 		LOGGER.debug("Create kafka producer");
-		final KafkaProducer<String, String> kafkaProducer = new KafkaProducer<>(properties);
+		final KafkaProducer<String, Status> kafkaProducer = new KafkaProducer<>(properties, new StringSerializer(),
+				new JsonSerializer<>());
 		final TwitterSource twitterSource = new TwitterSource(config, kafkaProducer);
 		LOGGER.info("Starting twitter source");
 		twitterSource.start();
