@@ -1,34 +1,37 @@
 package de.sgnosti.wallhack.twitter;
 
+import java.time.Duration;
 import java.util.Collections;
+import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import com.google.inject.Inject;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.errors.WakeupException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-
 public class TwitterSink {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TwitterSink.class);
 	private static final String STATUS_KEY = "status";
 	private static final String TOPIC = "twitter";
 
-	private final ExecutorService executorService = Executors
-			.newSingleThreadExecutor(new ThreadFactoryBuilder().setNameFormat("TwitterSink-%d").build());
-
-	private final KafkaConsumer<String, String> kafkaConsumer;
+	private final ExecutorService executorService;
+    private Duration timeout;
+    private final KafkaConsumer<String, String> kafkaConsumer;
 
 	private final AtomicBoolean closed = new AtomicBoolean(false);
 
-	public TwitterSink(KafkaConsumer<String, String> kafkaConsumer) {
+	@Inject
+    public TwitterSink(KafkaConsumer<String, String> kafkaConsumer, ExecutorService executorService, Duration timeout) {
 		this.kafkaConsumer = kafkaConsumer;
-	}
+        this.executorService = executorService;
+        this.timeout = timeout;
+    }
 
 	public void start() {
 		LOGGER.debug("Start kafka consumer");
@@ -36,19 +39,22 @@ public class TwitterSink {
 		executorService.execute(() -> {
 			while (!closed.get()) {
 				try {
-					final ConsumerRecords<String, String> consumerRecords = kafkaConsumer.poll(10000000);
-					LOGGER.trace("Received {} records.", consumerRecords.count());
-					consumerRecords.forEach(record -> System.out
-							.println(record.offset() + " | " + record.key() + " -> " + record.value()));
+					final ConsumerRecords<String, String> consumerRecords = kafkaConsumer.poll(timeout.toMillis());
+					executorService.execute(() -> consume(consumerRecords));
+
 				} catch (final WakeupException e) {
 					if (!closed.get())
 						throw e;
-				} finally {
-					kafkaConsumer.close();
 				}
 			}
+			kafkaConsumer.close();
 		});
 	}
+
+	void consume(ConsumerRecords<String, String> consumerRecords) {
+        LOGGER.trace("Received {} records.", consumerRecords.count());
+        consumerRecords.forEach(record -> System.out.println(record.offset() + " | " + record.key() + " -> " + record.value()));
+    }
 
 	public void close() throws Exception {
 		LOGGER.debug("Close kafka consumer");
