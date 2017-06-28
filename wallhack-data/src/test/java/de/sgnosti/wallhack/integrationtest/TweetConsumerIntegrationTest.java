@@ -11,7 +11,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.sgnosti.wallhack.twitter.TweetConsumer;
+import de.sgnosti.wallhack.reader.TweetConsumer;
 import twitter4j.FilterQuery;
 import twitter4j.TwitterStream;
 import twitter4j.TwitterStreamFactory;

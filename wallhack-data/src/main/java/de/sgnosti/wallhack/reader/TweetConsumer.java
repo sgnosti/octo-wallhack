@@ -1,11 +1,11 @@
-package de.sgnosti.wallhack.twitter;
+package de.sgnosti.wallhack.reader;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.sgnosti.wallhack.twitter.util.StatusParser;
+import de.sgnosti.wallhack.util.StatusParser;
 import twitter4j.StallWarning;
 import twitter4j.Status;
 import twitter4j.StatusDeletionNotice;

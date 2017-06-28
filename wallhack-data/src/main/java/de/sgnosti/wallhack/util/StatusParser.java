@@ -1,4 +1,4 @@
-package de.sgnosti.wallhack.twitter.util;
+package de.sgnosti.wallhack.util;
 
 import twitter4j.Status;
 
