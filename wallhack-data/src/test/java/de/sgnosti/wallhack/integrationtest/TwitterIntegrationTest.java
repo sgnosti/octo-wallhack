@@ -2,6 +2,8 @@ package de.sgnosti.wallhack.integrationtest;
 
 import static org.mockito.Mockito.*;
 
+import java.util.Arrays;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -61,7 +63,7 @@ public class TwitterIntegrationTest {
 	@Ignore
 	@Test
 	public void initializeWithFilterAndReceiveStatusMessage() throws Exception {
-		LOGGER.debug("Incoming messages containing one of the terms in {}", TRACKS);
+		LOGGER.debug("Incoming messages containing one of the terms in {}", Arrays.asList(TRACKS));
 
 		twitterStream.addListener(statusListener);
 		final FilterQuery query = new FilterQuery(TRACKS);
@@ -87,7 +89,7 @@ public class TwitterIntegrationTest {
 	@Ignore
 	@Test
 	public void initializeAndReceiveMessagesFromUserStreamContainingTracks() throws Exception {
-		LOGGER.debug("Incoming messages from user stream containing one of the terms in {}", TRACKS);
+		LOGGER.debug("Incoming messages from user stream containing one of the terms in {}", Arrays.asList(TRACKS));
 
 		twitterStream.addListener(userStreamListener);
 		twitterStream.user(TRACKS);

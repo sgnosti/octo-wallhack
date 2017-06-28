@@ -10,15 +10,10 @@ import org.slf4j.LoggerFactory;
 
 import de.sgnosti.wallhack.config.WallhackDataConfiguration;
 import de.sgnosti.wallhack.config.WallhackDataConfigurationLoader;
-import de.sgnosti.wallhack.reader.TwitterStreamListener;
+import de.sgnosti.wallhack.reader.TwitterSource;
 import de.sgnosti.wallhack.writer.TwitterSink;
-import twitter4j.FilterQuery;
-import twitter4j.TwitterStream;
-import twitter4j.TwitterStreamFactory;
 
 public class StreamingMain {
-
-	
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(StreamingMain.class);
 	private static final String CONFIG_FILE = "config.properties";
@@ -37,26 +32,22 @@ public class StreamingMain {
 			LOGGER.error("Error loading properties file", e);
 		}
 
-		LOGGER.debug("Create kafka producer");
-		final KafkaProducer<String, String> kafkaProducer = new KafkaProducer<>(properties);
-
 		LOGGER.debug("Create kafka consumer");
 		final KafkaConsumer<String, String> kafkaConsumer = new KafkaConsumer<>(properties);
 		final TwitterSink twitterSink = new TwitterSink(config, kafkaConsumer);
+		LOGGER.info("Starting twitter sink");
 		twitterSink.start();
 
-		LOGGER.info("Starting twitter stream");
-		final TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
-		twitterStream.addListener(new TwitterStreamListener(config, kafkaProducer));
-
-		final FilterQuery query = new FilterQuery(
-				config.getTwitterTracks().toArray(new String[config.getTwitterTracks().size()]));
-		twitterStream.filter(query);
+		LOGGER.debug("Create kafka producer");
+		final KafkaProducer<String, String> kafkaProducer = new KafkaProducer<>(properties);
+		final TwitterSource twitterSource = new TwitterSource(config, kafkaProducer);
+		LOGGER.info("Starting twitter source");
+		twitterSource.start();
 
 		System.in.read();
 
-		twitterStream.cleanUp();
-		kafkaProducer.close();
+		LOGGER.info("Finishing application...");
+		twitterSource.close();
 		twitterSink.close();
 
 		LOGGER.info("Done");

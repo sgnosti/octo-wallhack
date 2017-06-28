@@ -48,8 +48,6 @@ public class TwitterSink {
 				} catch (final WakeupException e) {
 					if (!closed.get())
 						throw e;
-				} finally {
-					kafkaConsumer.close();
 				}
 			}
 		});
