@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
 import de.sgnosti.wallhack.config.WallhackDataConfiguration;
+import de.sgnosti.wallhack.model.Tweet;
 
 public class TwitterSink {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TwitterSink.class);
@@ -23,13 +24,13 @@ public class TwitterSink {
 	private final ExecutorService executorService = Executors
 			.newSingleThreadExecutor(new ThreadFactoryBuilder().setNameFormat("TwitterSink-%d").build());
 
-	private final KafkaConsumer<String, String> kafkaConsumer;
+	private final KafkaConsumer<String, Tweet> kafkaConsumer;
 
 	private final AtomicBoolean closed = new AtomicBoolean(false);
 
 	private final WallhackDataConfiguration config;
 
-	public TwitterSink(WallhackDataConfiguration config, KafkaConsumer<String, String> kafkaConsumer) {
+	public TwitterSink(WallhackDataConfiguration config, KafkaConsumer<String, Tweet> kafkaConsumer) {
 		this.config = config;
 		this.kafkaConsumer = kafkaConsumer;
 	}
@@ -40,7 +41,7 @@ public class TwitterSink {
 		executorService.execute(() -> {
 			while (!closed.get()) {
 				try {
-					final ConsumerRecords<String, String> consumerRecords = kafkaConsumer
+					final ConsumerRecords<String, Tweet> consumerRecords = kafkaConsumer
 							.poll(config.getKafkaTimeout());
 					LOGGER.trace("Received {} records.", consumerRecords.count());
 					consumerRecords.forEach(record -> System.out

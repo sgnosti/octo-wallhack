@@ -7,7 +7,7 @@
   </Appenders>
 
   <Loggers>
-    <Logger name="de.sgnosti.wallhack" level="trace" additivity="false">
+    <Logger name="de.sgnosti.wallhack" level="debug" additivity="false">
       <AppenderRef ref="Console"/>
     </Logger>
     <Root level="error">

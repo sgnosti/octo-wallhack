@@ -5,39 +5,28 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.sgnosti.wallhack.config.WallhackDataConfiguration;
-import twitter4j.FilterQuery;
-import twitter4j.Status;
-import twitter4j.TwitterStream;
-import twitter4j.TwitterStreamFactory;
+import de.sgnosti.wallhack.model.Tweet;
 
 public class TwitterSource {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(TwitterSource.class);
 
 	private final WallhackDataConfiguration config;
-	private final KafkaProducer<String, Status> kafkaProducer;
+	private final KafkaProducer<String, Tweet> kafkaProducer;
 
-	private TwitterStream twitterStream;
-
-	public TwitterSource(WallhackDataConfiguration config, KafkaProducer<String, Status> kafkaProducer) {
+	public TwitterSource(WallhackDataConfiguration config, KafkaProducer<String, Tweet> kafkaProducer) {
 		this.config = config;
 		this.kafkaProducer = kafkaProducer;
 	}
 
 	public void start() {
-
 		LOGGER.info("Starting twitter stream");
-		twitterStream = new TwitterStreamFactory().getInstance();
-		twitterStream.addListener(new TwitterStreamListener(config, kafkaProducer));
-
-		final String[] tracks = config.getTwitterTracks().toArray(new String[config.getTwitterTracks().size()]);
-		final FilterQuery query = new FilterQuery(tracks);
-		twitterStream.filter(query);
+		// TODO: connect twitter stream
 	}
 
 	public void close() {
-		LOGGER.debug("Clean up twitter stream");
-		twitterStream.cleanUp();
+		LOGGER.debug("Close twitter stream");
+		// TODO: disconnect twitter stream
 		LOGGER.debug("Close kafka producer");
 		kafkaProducer.close();
 	}

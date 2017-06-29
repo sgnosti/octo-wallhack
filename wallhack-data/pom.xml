@@ -77,16 +77,6 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
 
-		<dependency>
-		    <groupId>org.twitter4j</groupId>
-		    <artifactId>twitter4j-stream</artifactId>
-		</dependency>
-
-        <dependency>
-            <groupId>com.google.inject</groupId>
-            <artifactId>guice</artifactId>
-        </dependency>
-
         <dependency>
           <groupId>org.apache.commons</groupId>
           <artifactId>commons-configuration2</artifactId>
