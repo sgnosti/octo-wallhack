@@ -88,6 +88,13 @@
         <artifactId>hbc-core</artifactId>
       </dependency>
       
+      <dependency>
+          <groupId>org.json</groupId>
+          <artifactId>json</artifactId>
+      </dependency>
+
+      
+      
     </dependencies>
 
 </project>

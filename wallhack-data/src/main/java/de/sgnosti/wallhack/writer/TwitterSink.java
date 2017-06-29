@@ -11,12 +11,14 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.errors.WakeupException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
 import de.sgnosti.wallhack.config.WallhackDataConfiguration;
+import de.sgnosti.wallhack.model.TweetField;
 
 public class TwitterSink {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TwitterSink.class);
@@ -58,10 +60,23 @@ public class TwitterSink {
 	}
 
 	private void processRecord(ConsumerRecord<String, String> record) {
-		if (config.getKafkaStatusKey().equals(record.key())) {
-			cassandraWriter.write(record.value());
+		if (config.getKafkaStatusKey().equals(record.key()) && record.value() != null) {
+			final JSONObject json = new JSONObject(record.value());
+			if (worthSaving(json)) {
+				cassandraWriter.write(json);
+				LOGGER.info("Message: " + json.getString(TweetField.TEXT.getKey()));
+			}
 			// TODO: further analysis with Flink
 		}
+	}
+
+	private boolean worthSaving(JSONObject json) {
+		// only save "original" messages, no retweets
+		if (json.optBoolean(TweetField.RETWEET.getKey()))
+			return false;
+		if (json.opt(TweetField.QUOTED_STATUS.getKey()) != null)
+			return false;
+		return true;
 	}
 
 	public void close() throws Exception {

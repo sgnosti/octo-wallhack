@@ -1,5 +1,6 @@
 package de.sgnosti.wallhack.writer;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,9 +32,9 @@ public class CassandraWriter {
 				.prepare("insert into " + config.getCassandraMessageTable() + "(id, content) values (uuid(), ?)");
 	}
 
-	public void write(String message) {
+	public void write(final JSONObject json) {
 		final BoundStatement stmt = insertStmt.bind();
-		stmt.setString("content", message);
+		stmt.setString("content", json.toString());
 		session.executeAsync(stmt);
 	}
 

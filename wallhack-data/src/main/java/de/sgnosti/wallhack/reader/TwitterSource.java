@@ -134,13 +134,14 @@ public class TwitterSource {
 
 	void processMessage(String message) {
 		final ProducerRecord<String, String> record = new ProducerRecord<String, String>(config.getKafkaTopic(),
-				config.getKafkaStatusKey(),
-				message);
+				config.getKafkaStatusKey(), message);
 		kafkaProducer.send(record);
 	}
 
 	void processEvent(Event event) {
-		LOGGER.debug("Event of type {} with message {}", event.getEventType(), event.getMessage());
+		if (event != null) {
+			LOGGER.debug("Event of type {} with message {}", event.getEventType(), event.getMessage());
+		}
 	}
 
 }
