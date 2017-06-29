@@ -19,6 +19,9 @@ public final class WallhackDataConfigurationLoader {
 	private static final String TWITTER_TRACKS_PROPERTY = "twitter.tracks";
 	private static final String KAFKA_TIMEOUT_PROPERTY = "kafka.timeout.ms";
 	private static final String TWITTER_TIMEOUT_PROPERTY = "twitter.timeout.ms";
+	private static final String CASSANDRA_HOST_PROPERTY = "cassandra.host";
+	private static final String CASSANDRA_KEYSPACE_PROPERTY = "cassandra.keyspace";
+	private static final String CASSANDRA_MSG_TABLE_PROPERTY = "cassandra.message.table";
 
 
 	private WallhackDataConfigurationLoader() {
@@ -45,6 +48,9 @@ public final class WallhackDataConfigurationLoader {
 		config.setTwitterTracks(propertiesConfiguration.getList(String.class, TWITTER_TRACKS_PROPERTY));
 		config.setKafkaTimeout(propertiesConfiguration.getLong(KAFKA_TIMEOUT_PROPERTY));
 		config.setTwitterTimeout(propertiesConfiguration.getLong(TWITTER_TIMEOUT_PROPERTY));
+		config.setCassandraHost(propertiesConfiguration.getString(CASSANDRA_HOST_PROPERTY));
+		config.setCassandraKeyspace(propertiesConfiguration.getString(CASSANDRA_KEYSPACE_PROPERTY));
+		config.setCassandraMessageTable(propertiesConfiguration.getString(CASSANDRA_MSG_TABLE_PROPERTY));
 
 		return config;
 	}

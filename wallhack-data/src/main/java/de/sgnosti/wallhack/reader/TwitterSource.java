@@ -119,6 +119,8 @@ public class TwitterSource {
 				.processor(new StringDelimitedProcessor(msgQueue)).eventMessageQueue(eventQueue);
 
 		hosebirdClient = builder.build();
+
+		// TODO: manage connection errors, retries and so on
 		hosebirdClient.connect();
 	}
 

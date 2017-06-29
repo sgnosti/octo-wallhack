@@ -67,22 +67,12 @@
         <version>2.4.17</version>
       </dependency>
 
-      <!-- Cassandra: NoSQL database -->
+      <!-- Cassandra driver for Java -->
       <dependency>
-        <groupId>org.apache.cassandra</groupId>
-        <artifactId>cassandra-all</artifactId>
-        <version>3.10</version>
-        <exclusions>
-          <exclusion>
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
+        <groupId>com.datastax.cassandra</groupId>
+        <artifactId>cassandra-driver-core</artifactId>
+        <version>3.3.0</version>
+    </dependency>
 
       <!-- Kafka: Distributed stream processing (monitoring, log aggregation, event sourcing...) -->
       <dependency>

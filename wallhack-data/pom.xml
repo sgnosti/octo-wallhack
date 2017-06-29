@@ -37,19 +37,9 @@
         </dependency>
 		
 		<dependency>
-		    <groupId>org.apache.cassandra</groupId>
-		    <artifactId>cassandra-all</artifactId>
-		    <exclusions>
-		      <exclusion>
-		        <groupId>org.slf4j</groupId>
-		        <artifactId>log4j-over-slf4j</artifactId>
-		      </exclusion>
-		      <exclusion>
-		        <groupId>ch.qos.logback</groupId>
-		        <artifactId>logback-classic</artifactId>
-		      </exclusion>
-		    </exclusions>
-		</dependency>
+          <groupId>com.datastax.cassandra</groupId>
+          <artifactId>cassandra-driver-core</artifactId>
+      </dependency>
 		
 		<dependency>
 		    <groupId>org.apache.kafka</groupId>

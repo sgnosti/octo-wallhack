@@ -18,5 +18,8 @@ public class WallhackDataConfigurationLoaderTest {
 		assertNotNull(config.getTwitterTimeout());
 		assertNotNull(config.getTwitterTracks());
 		assertNotNull(config.getKafkaConfigFile());
+		assertNotNull(config.getCassandraHost());
+		assertNotNull(config.getCassandraKeyspace());
+		assertNotNull(config.getCassandraMessageTable());
 	}
 }

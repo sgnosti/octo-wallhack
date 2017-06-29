@@ -16,6 +16,9 @@ public class WallhackDataConfiguration {
 	private List<String> twitterTracks = null;
 	private long kafkaTimeout;
 	private long twitterTimeout;
+	private String cassandraHost;
+	private String cassandraKeyspace;
+	private String cassandraMessageTable;
 
 	public String getKafkaConfigFile() {
 		return kafkaConfigFile;
@@ -68,6 +71,30 @@ public class WallhackDataConfiguration {
 
 	public void setTwitterTimeout(long twitterTimeout) {
 		this.twitterTimeout = twitterTimeout;
+	}
+
+	public String getCassandraHost() {
+		return cassandraHost;
+	}
+
+	public void setCassandraHost(String cassandraHost) {
+		this.cassandraHost = cassandraHost;
+	}
+
+	public String getCassandraKeyspace() {
+		return cassandraKeyspace;
+	}
+
+	public void setCassandraKeyspace(String cassandraKeyspace) {
+		this.cassandraKeyspace = cassandraKeyspace;
+	}
+
+	public String getCassandraMessageTable() {
+		return cassandraMessageTable;
+	}
+
+	public void setCassandraMessageTable(String cassandraMessageTable) {
+		this.cassandraMessageTable = cassandraMessageTable;
 	}
 
 }
