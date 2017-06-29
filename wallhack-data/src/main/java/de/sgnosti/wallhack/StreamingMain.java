@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 
 import de.sgnosti.wallhack.config.WallhackDataConfiguration;
 import de.sgnosti.wallhack.config.WallhackDataConfigurationLoader;
-import de.sgnosti.wallhack.model.Tweet;
 import de.sgnosti.wallhack.reader.TwitterSource;
 import de.sgnosti.wallhack.writer.TwitterSink;
 
@@ -34,13 +33,13 @@ public class StreamingMain {
 		}
 
 		LOGGER.debug("Create kafka consumer");
-		final KafkaConsumer<String, Tweet> kafkaConsumer = new KafkaConsumer<>(properties);
+		final KafkaConsumer<String, String> kafkaConsumer = new KafkaConsumer<>(properties);
 		final TwitterSink twitterSink = new TwitterSink(config, kafkaConsumer);
 		LOGGER.info("Starting twitter sink");
 		twitterSink.start();
 
 		LOGGER.debug("Create kafka producer");
-		final KafkaProducer<String, Tweet> kafkaProducer = new KafkaProducer<>(properties);
+		final KafkaProducer<String, String> kafkaProducer = new KafkaProducer<>(properties);
 		final TwitterSource twitterSource = new TwitterSource(config, kafkaProducer);
 		LOGGER.info("Starting twitter source");
 		twitterSource.start();
