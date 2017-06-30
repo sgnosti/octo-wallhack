@@ -55,7 +55,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "possiblySensitive",
     "urlentities"
 })
-public class Tweet {
+public class RetweetedStatus {
 
     @JsonProperty("accessLevel")
     private Integer accessLevel;
@@ -78,9 +78,9 @@ public class Tweet {
     @JsonProperty("geoLocation")
     private Object geoLocation;
     @JsonProperty("hashtagEntities")
-	private List<HashtagEntity> hashtagEntities = new ArrayList<HashtagEntity>();
+    private List<HashtagEntity> hashtagEntities = new ArrayList<HashtagEntity>();
     @JsonProperty("id")
-	private Long id;
+    private Long id;
     @JsonProperty("inReplyToScreenName")
     private Object inReplyToScreenName;
     @JsonProperty("inReplyToStatusId")
@@ -110,7 +110,7 @@ public class Tweet {
     @JsonProperty("retweetedByMe")
     private Boolean retweetedByMe;
     @JsonProperty("retweetedStatus")
-    private RetweetedStatus retweetedStatus;
+    private Object retweetedStatus;
     @JsonProperty("scopes")
     private Object scopes;
     @JsonProperty("source")
@@ -124,9 +124,9 @@ public class Tweet {
     @JsonProperty("urlentities")
     private List<Object> urlentities = new ArrayList<Object>();
     @JsonProperty("user")
-    private User_ user;
+    private User user;
     @JsonProperty("userMentionEntities")
-    private List<UserMentionEntity> userMentionEntities = new ArrayList<UserMentionEntity>();
+    private List<Object> userMentionEntities = new ArrayList<Object>();
     @JsonProperty("withheldInCountries")
     private Object withheldInCountries;
 
@@ -135,10 +135,10 @@ public class Tweet {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Tweet) == false) {
+        if ((other instanceof RetweetedStatus) == false) {
             return false;
         }
-        final Tweet rhs = ((Tweet) other);
+        final RetweetedStatus rhs = ((RetweetedStatus) other);
         return new EqualsBuilder().append(rateLimitStatus, rhs.rateLimitStatus).append(accessLevel, rhs.accessLevel).append(createdAt, rhs.createdAt).append(id, rhs.id).append(text, rhs.text).append(displayTextRangeStart, rhs.displayTextRangeStart).append(displayTextRangeEnd, rhs.displayTextRangeEnd).append(source, rhs.source).append(inReplyToStatusId, rhs.inReplyToStatusId).append(inReplyToUserId, rhs.inReplyToUserId).append(favoriteCount, rhs.favoriteCount).append(inReplyToScreenName, rhs.inReplyToScreenName).append(geoLocation, rhs.geoLocation).append(place, rhs.place).append(retweetCount, rhs.retweetCount).append(lang, rhs.lang).append(retweetedStatus, rhs.retweetedStatus).append(userMentionEntities, rhs.userMentionEntities).append(hashtagEntities, rhs.hashtagEntities).append(mediaEntities, rhs.mediaEntities).append(symbolEntities, rhs.symbolEntities).append(currentUserRetweetId, rhs.currentUserRetweetId).append(scopes, rhs.scopes).append(user, rhs.user).append(withheldInCountries, rhs.withheldInCountries).append(quotedStatus, rhs.quotedStatus).append(quotedStatusId, rhs.quotedStatusId).append(truncated, rhs.truncated).append(favorited, rhs.favorited).append(retweeted, rhs.retweeted).append(retweet, rhs.retweet).append(contributors, rhs.contributors).append(retweetedByMe, rhs.retweetedByMe).append(possiblySensitive, rhs.possiblySensitive).append(urlentities, rhs.urlentities).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
@@ -193,7 +193,7 @@ public class Tweet {
     }
 
     @JsonProperty("hashtagEntities")
-	public List<HashtagEntity> getHashtagEntities() {
+    public List<HashtagEntity> getHashtagEntities() {
         return hashtagEntities;
     }
 
@@ -273,7 +273,7 @@ public class Tweet {
     }
 
     @JsonProperty("retweetedStatus")
-    public RetweetedStatus getRetweetedStatus() {
+    public Object getRetweetedStatus() {
         return retweetedStatus;
     }
 
@@ -308,12 +308,12 @@ public class Tweet {
     }
 
     @JsonProperty("user")
-    public User_ getUser() {
+    public User getUser() {
         return user;
     }
 
     @JsonProperty("userMentionEntities")
-    public List<UserMentionEntity> getUserMentionEntities() {
+    public List<Object> getUserMentionEntities() {
         return userMentionEntities;
     }
 
@@ -378,12 +378,12 @@ public class Tweet {
     }
 
     @JsonProperty("hashtagEntities")
-	public void setHashtagEntities(List<HashtagEntity> hashtagEntities) {
+    public void setHashtagEntities(List<HashtagEntity> hashtagEntities) {
         this.hashtagEntities = hashtagEntities;
     }
 
     @JsonProperty("id")
-	public void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -458,7 +458,7 @@ public class Tweet {
     }
 
     @JsonProperty("retweetedStatus")
-    public void setRetweetedStatus(RetweetedStatus retweetedStatus) {
+    public void setRetweetedStatus(Object retweetedStatus) {
         this.retweetedStatus = retweetedStatus;
     }
 
@@ -493,12 +493,12 @@ public class Tweet {
     }
 
     @JsonProperty("user")
-    public void setUser(User_ user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
     @JsonProperty("userMentionEntities")
-    public void setUserMentionEntities(List<UserMentionEntity> userMentionEntities) {
+    public void setUserMentionEntities(List<Object> userMentionEntities) {
         this.userMentionEntities = userMentionEntities;
     }
 

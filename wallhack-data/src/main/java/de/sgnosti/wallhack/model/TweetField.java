@@ -2,9 +2,9 @@ package de.sgnosti.wallhack.model;
 
 public enum TweetField {
 
-	RETWEET("retweet", Boolean.class), RETWEET_COUNT("retweetCount", Integer.class), TEXT("text",
-			Boolean.class), LANG("lang", String.class), ID("id",
-					Long.class), CREATED_AT("createdAt", Long.class), QUOTED_STATUS("quoted_status", String.class);
+	CREATED_AT("createdAt", Long.class), ID("id",
+			Long.class), LANG("lang", String.class), QUOTED_STATUS("quoted_status", String.class), RETWEET("retweet", Boolean.class), RETWEET_COUNT("retweetCount", Integer.class), TEXT("text",
+							Boolean.class);
 	
 	private String key;
 	private Class<?> type;
