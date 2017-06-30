@@ -51,3 +51,4 @@ target/
 # twitter credentials
 twitter4j.properties
 
+.DS_Store
