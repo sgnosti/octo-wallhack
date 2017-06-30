@@ -19,7 +19,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
     "h",
     "resize"
 })
-public class Medium_ {
+public class MediumSize {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -35,10 +35,10 @@ public class Medium_ {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Medium_) == false) {
+        if ((other instanceof MediumSize) == false) {
             return false;
         }
-        Medium_ rhs = ((Medium_) other);
+        MediumSize rhs = ((MediumSize) other);
         return new EqualsBuilder().append(w, rhs.w).append(h, rhs.h).append(resize, rhs.resize).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 

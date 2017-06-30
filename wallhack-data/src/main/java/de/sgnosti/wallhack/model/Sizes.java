@@ -25,11 +25,11 @@ public class Sizes {
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonProperty("large")
-    private Large large;
+    private LargeSize large;
     @JsonProperty("medium")
-    private Medium_ medium;
+    private MediumSize medium;
     @JsonProperty("small")
-    private Small small;
+    private SmallSize small;
     @JsonProperty("thumb")
     private Thumb thumb;
 
@@ -51,17 +51,17 @@ public class Sizes {
     }
 
     @JsonProperty("large")
-    public Large getLarge() {
+    public LargeSize getLarge() {
         return large;
     }
 
     @JsonProperty("medium")
-    public Medium_ getMedium() {
+    public MediumSize getMedium() {
         return medium;
     }
 
     @JsonProperty("small")
-    public Small getSmall() {
+    public SmallSize getSmall() {
         return small;
     }
 
@@ -81,17 +81,17 @@ public class Sizes {
     }
 
     @JsonProperty("large")
-    public void setLarge(Large large) {
+    public void setLarge(LargeSize large) {
         this.large = large;
     }
 
     @JsonProperty("medium")
-    public void setMedium(Medium_ medium) {
+    public void setMedium(MediumSize medium) {
         this.medium = medium;
     }
 
     @JsonProperty("small")
-    public void setSmall(Small small) {
+    public void setSmall(SmallSize small) {
         this.small = small;
     }
 
