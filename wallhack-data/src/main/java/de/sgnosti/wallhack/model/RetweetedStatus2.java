@@ -63,7 +63,7 @@ public class RetweetedStatus2 {
     @JsonProperty("display_text_range")
     private List<Integer> displayTextRange = new ArrayList<Integer>();
     @JsonProperty("entities")
-	private Entities_ entities;
+	private Entities entities;
     @JsonProperty("extended_tweet")
     private ExtendedTweet extendedTweet;
     @JsonProperty("favorite_count")
@@ -97,7 +97,7 @@ public class RetweetedStatus2 {
     @JsonProperty("possibly_sensitive")
     private Boolean possiblySensitive;
     @JsonProperty("quoted_status")
-    private QuotedStatus_ quotedStatus;
+	private QuotedStatus quotedStatus;
     @JsonProperty("quoted_status_id")
     private Long quotedStatusId;
     @JsonProperty("quoted_status_id_str")
@@ -113,7 +113,7 @@ public class RetweetedStatus2 {
     @JsonProperty("truncated")
     private Boolean truncated;
     @JsonProperty("user")
-    private User__ user;
+	private User2 user;
 
     @Override
     public boolean equals(Object other) {
@@ -153,7 +153,7 @@ public class RetweetedStatus2 {
     }
 
     @JsonProperty("entities")
-	public Entities_ getEntities() {
+	public Entities getEntities() {
         return entities;
     }
 
@@ -238,7 +238,7 @@ public class RetweetedStatus2 {
     }
 
     @JsonProperty("quoted_status")
-    public QuotedStatus_ getQuotedStatus() {
+	public QuotedStatus getQuotedStatus() {
         return quotedStatus;
     }
 
@@ -278,7 +278,7 @@ public class RetweetedStatus2 {
     }
 
     @JsonProperty("user")
-    public User__ getUser() {
+	public User2 getUser() {
         return user;
     }
 
@@ -313,7 +313,7 @@ public class RetweetedStatus2 {
     }
 
     @JsonProperty("entities")
-	public void setEntities(Entities_ entities) {
+	public void setEntities(Entities entities) {
         this.entities = entities;
     }
 
@@ -398,7 +398,7 @@ public class RetweetedStatus2 {
     }
 
     @JsonProperty("quoted_status")
-    public void setQuotedStatus(QuotedStatus_ quotedStatus) {
+	public void setQuotedStatus(QuotedStatus quotedStatus) {
         this.quotedStatus = quotedStatus;
     }
 
@@ -438,7 +438,7 @@ public class RetweetedStatus2 {
     }
 
     @JsonProperty("user")
-    public void setUser(User__ user) {
+	public void setUser(User2 user) {
         this.user = user;
     }
 

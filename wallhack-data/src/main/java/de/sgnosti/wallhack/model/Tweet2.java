@@ -58,7 +58,7 @@ public class Tweet2 {
     @JsonProperty("created_at")
     private String createdAt;
     @JsonProperty("entities")
-	private Entities_ entities;
+	private Entities entities;
     @JsonProperty("favorite_count")
     private Integer favoriteCount;
     @JsonProperty("favorited")
@@ -108,7 +108,7 @@ public class Tweet2 {
     @JsonProperty("truncated")
     private Boolean truncated;
     @JsonProperty("user")
-    private User___ user;
+	private User2 user;
 
     @Override
     public boolean equals(Object other) {
@@ -143,7 +143,7 @@ public class Tweet2 {
     }
 
     @JsonProperty("entities")
-	public Entities_ getEntities() {
+	public Entities getEntities() {
         return entities;
     }
 
@@ -268,7 +268,7 @@ public class Tweet2 {
     }
 
     @JsonProperty("user")
-    public User___ getUser() {
+	public User2 getUser() {
         return user;
     }
 
@@ -298,7 +298,7 @@ public class Tweet2 {
     }
 
     @JsonProperty("entities")
-	public void setEntities(Entities_ entities) {
+	public void setEntities(Entities entities) {
         this.entities = entities;
     }
 
@@ -423,7 +423,7 @@ public class Tweet2 {
     }
 
     @JsonProperty("user")
-    public void setUser(User___ user) {
+	public void setUser(User2 user) {
         this.user = user;
     }
 

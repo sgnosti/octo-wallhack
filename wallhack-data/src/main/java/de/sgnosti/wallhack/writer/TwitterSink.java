@@ -15,9 +15,11 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
 import de.sgnosti.wallhack.config.WallhackDataConfiguration;
+import de.sgnosti.wallhack.model.Tweet;
 import de.sgnosti.wallhack.model.TweetField;
 
 public class TwitterSink {
@@ -63,8 +65,14 @@ public class TwitterSink {
 		if (config.getKafkaStatusKey().equals(record.key()) && record.value() != null) {
 			final JSONObject json = new JSONObject(record.value());
 			if (worthSaving(json)) {
-				cassandraWriter.write(json);
-				LOGGER.info("Message: " + json.getString(TweetField.TEXT.getKey()));
+				cassandraWriter.write(record.value());
+			}
+			final ObjectMapper objectMapper = new ObjectMapper();
+			try {
+				objectMapper.readValue(record.value(), Tweet.class);
+			} catch (final Exception e) {
+				LOGGER.info("Could not convert message, saving as corrupt");
+				cassandraWriter.writeCorrupt(record.value());
 			}
 			// TODO: further analysis with Flink
 		}
@@ -76,6 +84,10 @@ public class TwitterSink {
 			return false;
 		if (json.opt(TweetField.QUOTED_STATUS.getKey()) != null)
 			return false;
+		final String text = json.getString(TweetField.TEXT.getKey());
+		if (text.startsWith("RT @"))
+			return false;
+		LOGGER.debug("Message: " + text);
 		return true;
 	}
 

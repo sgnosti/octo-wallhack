@@ -124,7 +124,7 @@ public class Tweet {
     @JsonProperty("urlentities")
     private List<Object> urlentities = new ArrayList<Object>();
     @JsonProperty("user")
-    private User_ user;
+    private User user;
     @JsonProperty("userMentionEntities")
     private List<UserMentionEntity> userMentionEntities = new ArrayList<UserMentionEntity>();
     @JsonProperty("withheldInCountries")
@@ -308,7 +308,7 @@ public class Tweet {
     }
 
     @JsonProperty("user")
-    public User_ getUser() {
+    public User getUser() {
         return user;
     }
 
@@ -493,7 +493,7 @@ public class Tweet {
     }
 
     @JsonProperty("user")
-    public void setUser(User_ user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

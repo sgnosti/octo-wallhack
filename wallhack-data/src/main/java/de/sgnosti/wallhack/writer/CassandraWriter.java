@@ -1,6 +1,7 @@
 package de.sgnosti.wallhack.writer;
 
-import org.json.JSONObject;
+import java.util.UUID;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,6 +21,8 @@ public class CassandraWriter {
 
 	private PreparedStatement insertStmt;
 
+	private PreparedStatement insertCorruptStmt;
+
 	public CassandraWriter(WallhackDataConfiguration config) {
 		this.config = config;
 	}
@@ -29,18 +32,30 @@ public class CassandraWriter {
 		cluster = Cluster.builder().addContactPoint(config.getCassandraHost()).build();
 		session = cluster.connect(config.getCassandraKeyspace());
 		insertStmt = session
-				.prepare("insert into " + config.getCassandraMessageTable() + "(id, content) values (uuid(), ?)");
+				.prepare("insert into " + config.getCassandraMessageTable() + "(id, content) values (?, ?)");
+
+		insertCorruptStmt = session.prepare("insert into corrupt_message (id, content) values (uuid(), ?)");
+
 	}
 
-	public void write(final JSONObject json) {
+	public UUID write(final String content) {
 		final BoundStatement stmt = insertStmt.bind();
-		stmt.setString("content", json.toString());
+		final UUID uuid = UUID.randomUUID();
+		stmt.setUUID("id", uuid);
+		stmt.setString("content", content);
 		session.executeAsync(stmt);
+		return uuid;
 	}
 
 	public void close() {
 		LOGGER.debug("Close Cassandra session");
 		session.close();
 		cluster.close();
+	}
+
+	public void writeCorrupt(String value) {
+		final BoundStatement stmt = insertCorruptStmt.bind();
+		stmt.setString("content", value);
+		session.executeAsync(stmt);
 	}
 }

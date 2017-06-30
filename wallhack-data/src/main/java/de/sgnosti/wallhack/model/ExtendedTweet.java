@@ -5,15 +5,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -24,11 +26,11 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class ExtendedTweet {
 
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonProperty("display_text_range")
     private List<Integer> displayTextRange = new ArrayList<Integer>();
     @JsonProperty("entities")
-    private Entities_ entities;
+	private Entities entities;
     @JsonProperty("full_text")
     private String fullText;
 
@@ -40,7 +42,7 @@ public class ExtendedTweet {
         if ((other instanceof ExtendedTweet) == false) {
             return false;
         }
-        ExtendedTweet rhs = ((ExtendedTweet) other);
+        final ExtendedTweet rhs = ((ExtendedTweet) other);
         return new EqualsBuilder().append(entities, rhs.entities).append(fullText, rhs.fullText).append(displayTextRange, rhs.displayTextRange).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
@@ -55,7 +57,7 @@ public class ExtendedTweet {
     }
 
     @JsonProperty("entities")
-    public Entities_ getEntities() {
+	public Entities getEntities() {
         return entities;
     }
 
@@ -80,7 +82,7 @@ public class ExtendedTweet {
     }
 
     @JsonProperty("entities")
-    public void setEntities(Entities_ entities) {
+	public void setEntities(Entities entities) {
         this.entities = entities;
     }
 
