@@ -64,9 +64,9 @@ public class Tweet {
     @JsonProperty("contributors")
     private List<Object> contributors = new ArrayList<Object>();
     @JsonProperty("createdAt")
-    private Integer createdAt;
+    private Long createdAt;
     @JsonProperty("currentUserRetweetId")
-    private Integer currentUserRetweetId;
+    private Long currentUserRetweetId;
     @JsonProperty("displayTextRangeEnd")
     private Integer displayTextRangeEnd;
     @JsonProperty("displayTextRangeStart")
@@ -84,9 +84,9 @@ public class Tweet {
     @JsonProperty("inReplyToScreenName")
     private Object inReplyToScreenName;
     @JsonProperty("inReplyToStatusId")
-    private Integer inReplyToStatusId;
+    private Long inReplyToStatusId;
     @JsonProperty("inReplyToUserId")
-    private Integer inReplyToUserId;
+    private Long inReplyToUserId;
     @JsonProperty("lang")
     private String lang;
     @JsonProperty("mediaEntities")
@@ -98,7 +98,7 @@ public class Tweet {
     @JsonProperty("quotedStatus")
     private Object quotedStatus;
     @JsonProperty("quotedStatusId")
-    private Integer quotedStatusId;
+    private Long quotedStatusId;
     @JsonProperty("rateLimitStatus")
     private Object rateLimitStatus;
     @JsonProperty("retweet")
@@ -158,12 +158,12 @@ public class Tweet {
     }
 
     @JsonProperty("createdAt")
-    public Integer getCreatedAt() {
+    public Long getCreatedAt() {
         return createdAt;
     }
 
     @JsonProperty("currentUserRetweetId")
-    public Integer getCurrentUserRetweetId() {
+	public Long getCurrentUserRetweetId() {
         return currentUserRetweetId;
     }
 
@@ -208,12 +208,12 @@ public class Tweet {
     }
 
     @JsonProperty("inReplyToStatusId")
-    public Integer getInReplyToStatusId() {
+	public Long getInReplyToStatusId() {
         return inReplyToStatusId;
     }
 
     @JsonProperty("inReplyToUserId")
-    public Integer getInReplyToUserId() {
+	public Long getInReplyToUserId() {
         return inReplyToUserId;
     }
 
@@ -243,7 +243,7 @@ public class Tweet {
     }
 
     @JsonProperty("quotedStatusId")
-    public Integer getQuotedStatusId() {
+	public Long getQuotedStatusId() {
         return quotedStatusId;
     }
 
@@ -343,12 +343,12 @@ public class Tweet {
     }
 
     @JsonProperty("createdAt")
-    public void setCreatedAt(Integer createdAt) {
+    public void setCreatedAt(Long createdAt) {
         this.createdAt = createdAt;
     }
 
     @JsonProperty("currentUserRetweetId")
-    public void setCurrentUserRetweetId(Integer currentUserRetweetId) {
+    public void setCurrentUserRetweetId(Long currentUserRetweetId) {
         this.currentUserRetweetId = currentUserRetweetId;
     }
 
@@ -393,12 +393,12 @@ public class Tweet {
     }
 
     @JsonProperty("inReplyToStatusId")
-    public void setInReplyToStatusId(Integer inReplyToStatusId) {
+    public void setInReplyToStatusId(Long inReplyToStatusId) {
         this.inReplyToStatusId = inReplyToStatusId;
     }
 
     @JsonProperty("inReplyToUserId")
-    public void setInReplyToUserId(Integer inReplyToUserId) {
+    public void setInReplyToUserId(Long inReplyToUserId) {
         this.inReplyToUserId = inReplyToUserId;
     }
 
@@ -428,7 +428,7 @@ public class Tweet {
     }
 
     @JsonProperty("quotedStatusId")
-    public void setQuotedStatusId(Integer quotedStatusId) {
+    public void setQuotedStatusId(Long quotedStatusId) {
         this.quotedStatusId = quotedStatusId;
     }
 

@@ -89,7 +89,7 @@ public class User_ {
     @JsonProperty("contributorsEnabled")
     private Boolean contributorsEnabled;
     @JsonProperty("createdAt")
-    private Integer createdAt;
+    private Long createdAt;
     @JsonProperty("defaultProfile")
     private Boolean defaultProfile;
     @JsonProperty("defaultProfileImage")
@@ -225,7 +225,7 @@ public class User_ {
     }
 
     @JsonProperty("createdAt")
-    public Integer getCreatedAt() {
+    public Long getCreatedAt() {
         return createdAt;
     }
 
@@ -505,7 +505,7 @@ public class User_ {
     }
 
     @JsonProperty("createdAt")
-    public void setCreatedAt(Integer createdAt) {
+    public void setCreatedAt(Long createdAt) {
         this.createdAt = createdAt;
     }
 

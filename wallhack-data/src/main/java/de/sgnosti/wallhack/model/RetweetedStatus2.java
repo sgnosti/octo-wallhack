@@ -99,7 +99,7 @@ public class RetweetedStatus2 {
     @JsonProperty("quoted_status")
     private QuotedStatus_ quotedStatus;
     @JsonProperty("quoted_status_id")
-    private Integer quotedStatusId;
+    private Long quotedStatusId;
     @JsonProperty("quoted_status_id_str")
     private String quotedStatusIdStr;
     @JsonProperty("retweet_count")
@@ -243,7 +243,7 @@ public class RetweetedStatus2 {
     }
 
     @JsonProperty("quoted_status_id")
-    public Integer getQuotedStatusId() {
+	public Long getQuotedStatusId() {
         return quotedStatusId;
     }
 
@@ -403,7 +403,7 @@ public class RetweetedStatus2 {
     }
 
     @JsonProperty("quoted_status_id")
-    public void setQuotedStatusId(Integer quotedStatusId) {
+    public void setQuotedStatusId(Long quotedStatusId) {
         this.quotedStatusId = quotedStatusId;
     }
 
