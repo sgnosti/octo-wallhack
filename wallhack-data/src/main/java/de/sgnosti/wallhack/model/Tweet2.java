@@ -3,15 +3,17 @@ package de.sgnosti.wallhack.model;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -48,7 +50,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class Tweet2 {
 
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonProperty("contributors")
     private Object contributors;
     @JsonProperty("coordinates")
@@ -56,7 +58,7 @@ public class Tweet2 {
     @JsonProperty("created_at")
     private String createdAt;
     @JsonProperty("entities")
-    private Entities____ entities;
+	private Entities_ entities;
     @JsonProperty("favorite_count")
     private Integer favoriteCount;
     @JsonProperty("favorited")
@@ -116,7 +118,7 @@ public class Tweet2 {
         if ((other instanceof Tweet2) == false) {
             return false;
         }
-        Tweet2 rhs = ((Tweet2) other);
+        final Tweet2 rhs = ((Tweet2) other);
         return new EqualsBuilder().append(quotedStatus, rhs.quotedStatus).append(inReplyToStatusIdStr, rhs.inReplyToStatusIdStr).append(inReplyToStatusId, rhs.inReplyToStatusId).append(createdAt, rhs.createdAt).append(inReplyToUserIdStr, rhs.inReplyToUserIdStr).append(source, rhs.source).append(retweetedStatus, rhs.retweetedStatus).append(quotedStatusId, rhs.quotedStatusId).append(retweetCount, rhs.retweetCount).append(retweeted, rhs.retweeted).append(geo, rhs.geo).append(filterLevel, rhs.filterLevel).append(inReplyToScreenName, rhs.inReplyToScreenName).append(isQuoteStatus, rhs.isQuoteStatus).append(idStr, rhs.idStr).append(inReplyToUserId, rhs.inReplyToUserId).append(favoriteCount, rhs.favoriteCount).append(id, rhs.id).append(text, rhs.text).append(place, rhs.place).append(lang, rhs.lang).append(favorited, rhs.favorited).append(coordinates, rhs.coordinates).append(truncated, rhs.truncated).append(timestampMs, rhs.timestampMs).append(entities, rhs.entities).append(quotedStatusIdStr, rhs.quotedStatusIdStr).append(contributors, rhs.contributors).append(user, rhs.user).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
@@ -141,7 +143,7 @@ public class Tweet2 {
     }
 
     @JsonProperty("entities")
-    public Entities____ getEntities() {
+	public Entities_ getEntities() {
         return entities;
     }
 
@@ -296,7 +298,7 @@ public class Tweet2 {
     }
 
     @JsonProperty("entities")
-    public void setEntities(Entities____ entities) {
+	public void setEntities(Entities_ entities) {
         this.entities = entities;
     }
 

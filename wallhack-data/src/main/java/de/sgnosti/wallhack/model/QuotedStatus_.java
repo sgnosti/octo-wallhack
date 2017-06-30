@@ -5,15 +5,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -48,7 +50,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class QuotedStatus_ {
 
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonProperty("contributors")
     private Object contributors;
     @JsonProperty("coordinates")
@@ -58,9 +60,9 @@ public class QuotedStatus_ {
     @JsonProperty("display_text_range")
     private List<Integer> displayTextRange = new ArrayList<Integer>();
     @JsonProperty("entities")
-    private Entities__ entities;
+	private Entities entities;
     @JsonProperty("extended_entities")
-    private ExtendedEntities_ extendedEntities;
+	private ExtendedEntities extendedEntities;
     @JsonProperty("favorite_count")
     private Integer favoriteCount;
     @JsonProperty("favorited")
@@ -112,7 +114,7 @@ public class QuotedStatus_ {
         if ((other instanceof QuotedStatus_) == false) {
             return false;
         }
-        QuotedStatus_ rhs = ((QuotedStatus_) other);
+        final QuotedStatus_ rhs = ((QuotedStatus_) other);
         return new EqualsBuilder().append(extendedEntities, rhs.extendedEntities).append(inReplyToStatusIdStr, rhs.inReplyToStatusIdStr).append(inReplyToStatusId, rhs.inReplyToStatusId).append(createdAt, rhs.createdAt).append(inReplyToUserIdStr, rhs.inReplyToUserIdStr).append(source, rhs.source).append(retweetCount, rhs.retweetCount).append(retweeted, rhs.retweeted).append(geo, rhs.geo).append(filterLevel, rhs.filterLevel).append(inReplyToScreenName, rhs.inReplyToScreenName).append(isQuoteStatus, rhs.isQuoteStatus).append(idStr, rhs.idStr).append(inReplyToUserId, rhs.inReplyToUserId).append(favoriteCount, rhs.favoriteCount).append(id, rhs.id).append(text, rhs.text).append(place, rhs.place).append(lang, rhs.lang).append(favorited, rhs.favorited).append(possiblySensitive, rhs.possiblySensitive).append(coordinates, rhs.coordinates).append(truncated, rhs.truncated).append(entities, rhs.entities).append(displayTextRange, rhs.displayTextRange).append(contributors, rhs.contributors).append(user, rhs.user).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
@@ -142,12 +144,12 @@ public class QuotedStatus_ {
     }
 
     @JsonProperty("entities")
-    public Entities__ getEntities() {
+	public Entities getEntities() {
         return entities;
     }
 
     @JsonProperty("extended_entities")
-    public ExtendedEntities_ getExtendedEntities() {
+	public ExtendedEntities getExtendedEntities() {
         return extendedEntities;
     }
 
@@ -287,12 +289,12 @@ public class QuotedStatus_ {
     }
 
     @JsonProperty("entities")
-    public void setEntities(Entities__ entities) {
+	public void setEntities(Entities entities) {
         this.entities = entities;
     }
 
     @JsonProperty("extended_entities")
-    public void setExtendedEntities(ExtendedEntities_ extendedEntities) {
+	public void setExtendedEntities(ExtendedEntities extendedEntities) {
         this.extendedEntities = extendedEntities;
     }
 

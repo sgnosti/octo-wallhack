@@ -63,7 +63,7 @@ public class RetweetedStatus2 {
     @JsonProperty("display_text_range")
     private List<Integer> displayTextRange = new ArrayList<Integer>();
     @JsonProperty("entities")
-    private Entities___ entities;
+	private Entities_ entities;
     @JsonProperty("extended_tweet")
     private ExtendedTweet extendedTweet;
     @JsonProperty("favorite_count")
@@ -153,7 +153,7 @@ public class RetweetedStatus2 {
     }
 
     @JsonProperty("entities")
-    public Entities___ getEntities() {
+	public Entities_ getEntities() {
         return entities;
     }
 
@@ -313,7 +313,7 @@ public class RetweetedStatus2 {
     }
 
     @JsonProperty("entities")
-    public void setEntities(Entities___ entities) {
+	public void setEntities(Entities_ entities) {
         this.entities = entities;
     }
 

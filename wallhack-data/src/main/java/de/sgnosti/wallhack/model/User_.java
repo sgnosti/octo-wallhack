@@ -5,15 +5,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -79,7 +81,7 @@ public class User_ {
     @JsonProperty("accessLevel")
     private Integer accessLevel;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonProperty("biggerProfileImageURL")
     private String biggerProfileImageURL;
     @JsonProperty("biggerProfileImageURLHttps")
@@ -177,7 +179,7 @@ public class User_ {
     @JsonProperty("url")
     private Object url;
     @JsonProperty("urlentity")
-    private Urlentity_ urlentity;
+	private Urlentity urlentity;
     @JsonProperty("utcOffset")
     private Integer utcOffset;
     @JsonProperty("verified")
@@ -193,7 +195,7 @@ public class User_ {
         if ((other instanceof User_) == false) {
             return false;
         }
-        User_ rhs = ((User_) other);
+        final User_ rhs = ((User_) other);
         return new EqualsBuilder().append(rateLimitStatus, rhs.rateLimitStatus).append(accessLevel, rhs.accessLevel).append(id, rhs.id).append(name, rhs.name).append(email, rhs.email).append(screenName, rhs.screenName).append(location, rhs.location).append(description, rhs.description).append(descriptionURLEntities, rhs.descriptionURLEntities).append(url, rhs.url).append(followersCount, rhs.followersCount).append(status, rhs.status).append(profileBackgroundColor, rhs.profileBackgroundColor).append(profileTextColor, rhs.profileTextColor).append(profileLinkColor, rhs.profileLinkColor).append(profileSidebarFillColor, rhs.profileSidebarFillColor).append(profileSidebarBorderColor, rhs.profileSidebarBorderColor).append(profileUseBackgroundImage, rhs.profileUseBackgroundImage).append(showAllInlineMedia, rhs.showAllInlineMedia).append(friendsCount, rhs.friendsCount).append(createdAt, rhs.createdAt).append(favouritesCount, rhs.favouritesCount).append(utcOffset, rhs.utcOffset).append(timeZone, rhs.timeZone).append(profileBackgroundImageUrlHttps, rhs.profileBackgroundImageUrlHttps).append(profileBackgroundTiled, rhs.profileBackgroundTiled).append(lang, rhs.lang).append(statusesCount, rhs.statusesCount).append(translator, rhs.translator).append(listedCount, rhs.listedCount).append(withheldInCountries, rhs.withheldInCountries).append(_protected, rhs._protected).append(contributorsEnabled, rhs.contributorsEnabled).append(profileImageURL, rhs.profileImageURL).append(biggerProfileImageURL, rhs.biggerProfileImageURL).append(miniProfileImageURL, rhs.miniProfileImageURL).append(originalProfileImageURL, rhs.originalProfileImageURL).append(profileImageURLHttps, rhs.profileImageURLHttps).append(biggerProfileImageURLHttps, rhs.biggerProfileImageURLHttps).append(miniProfileImageURLHttps, rhs.miniProfileImageURLHttps).append(originalProfileImageURLHttps, rhs.originalProfileImageURLHttps).append(defaultProfileImage, rhs.defaultProfileImage).append(defaultProfile, rhs.defaultProfile).append(profileBackgroundImageURL, rhs.profileBackgroundImageURL).append(profileBannerURL, rhs.profileBannerURL).append(profileBannerRetinaURL, rhs.profileBannerRetinaURL).append(profileBannerIPadURL, rhs.profileBannerIPadURL).append(profileBannerIPadRetinaURL, rhs.profileBannerIPadRetinaURL).append(profileBannerMobileURL, rhs.profileBannerMobileURL).append(profileBannerMobileRetinaURL, rhs.profileBannerMobileRetinaURL).append(geoEnabled, rhs.geoEnabled).append(verified, rhs.verified).append(followRequestSent, rhs.followRequestSent).append(urlentity, rhs.urlentity).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
@@ -453,7 +455,7 @@ public class User_ {
     }
 
     @JsonProperty("urlentity")
-    public Urlentity_ getUrlentity() {
+	public Urlentity getUrlentity() {
         return urlentity;
     }
 
@@ -733,7 +735,7 @@ public class User_ {
     }
 
     @JsonProperty("urlentity")
-    public void setUrlentity(Urlentity_ urlentity) {
+	public void setUrlentity(Urlentity urlentity) {
         this.urlentity = urlentity;
     }
 
