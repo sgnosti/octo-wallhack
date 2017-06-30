@@ -5,15 +5,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -25,9 +27,9 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class Entities_ {
 
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonProperty("hashtags")
-    private List<Hashtag_> hashtags = new ArrayList<Hashtag_>();
+	private List<Hashtag> hashtags = new ArrayList<Hashtag>();
     @JsonProperty("symbols")
     private List<Object> symbols = new ArrayList<Object>();
     @JsonProperty("urls")
@@ -43,7 +45,7 @@ public class Entities_ {
         if ((other instanceof Entities_) == false) {
             return false;
         }
-        Entities_ rhs = ((Entities_) other);
+        final Entities_ rhs = ((Entities_) other);
         return new EqualsBuilder().append(urls, rhs.urls).append(hashtags, rhs.hashtags).append(userMentions, rhs.userMentions).append(symbols, rhs.symbols).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
@@ -53,7 +55,7 @@ public class Entities_ {
     }
 
     @JsonProperty("hashtags")
-    public List<Hashtag_> getHashtags() {
+	public List<Hashtag> getHashtags() {
         return hashtags;
     }
 
@@ -83,7 +85,7 @@ public class Entities_ {
     }
 
     @JsonProperty("hashtags")
-    public void setHashtags(List<Hashtag_> hashtags) {
+	public void setHashtags(List<Hashtag> hashtags) {
         this.hashtags = hashtags;
     }
 

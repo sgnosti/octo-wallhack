@@ -5,15 +5,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -26,11 +28,11 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class Entities {
 
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonProperty("hashtags")
     private List<Hashtag> hashtags = new ArrayList<Hashtag>();
     @JsonProperty("media")
-    private List<Medium__> media = new ArrayList<Medium__>();
+	private List<Medium> media = new ArrayList<Medium>();
     @JsonProperty("symbols")
     private List<Object> symbols = new ArrayList<Object>();
     @JsonProperty("urls")
@@ -46,7 +48,7 @@ public class Entities {
         if ((other instanceof Entities) == false) {
             return false;
         }
-        Entities rhs = ((Entities) other);
+        final Entities rhs = ((Entities) other);
         return new EqualsBuilder().append(urls, rhs.urls).append(hashtags, rhs.hashtags).append(media, rhs.media).append(userMentions, rhs.userMentions).append(symbols, rhs.symbols).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
@@ -61,7 +63,7 @@ public class Entities {
     }
 
     @JsonProperty("media")
-    public List<Medium__> getMedia() {
+	public List<Medium> getMedia() {
         return media;
     }
 
@@ -96,7 +98,7 @@ public class Entities {
     }
 
     @JsonProperty("media")
-    public void setMedia(List<Medium__> media) {
+	public void setMedia(List<Medium> media) {
         this.media = media;
     }
 
