@@ -5,15 +5,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -58,7 +60,7 @@ public class RetweetedStatus {
     @JsonProperty("accessLevel")
     private Integer accessLevel;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonProperty("contributors")
     private List<Object> contributors = new ArrayList<Object>();
     @JsonProperty("createdAt")
@@ -78,7 +80,7 @@ public class RetweetedStatus {
     @JsonProperty("hashtagEntities")
     private List<HashtagEntity> hashtagEntities = new ArrayList<HashtagEntity>();
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
     @JsonProperty("inReplyToScreenName")
     private Object inReplyToScreenName;
     @JsonProperty("inReplyToStatusId")
@@ -136,7 +138,7 @@ public class RetweetedStatus {
         if ((other instanceof RetweetedStatus) == false) {
             return false;
         }
-        RetweetedStatus rhs = ((RetweetedStatus) other);
+        final RetweetedStatus rhs = ((RetweetedStatus) other);
         return new EqualsBuilder().append(rateLimitStatus, rhs.rateLimitStatus).append(accessLevel, rhs.accessLevel).append(createdAt, rhs.createdAt).append(id, rhs.id).append(text, rhs.text).append(displayTextRangeStart, rhs.displayTextRangeStart).append(displayTextRangeEnd, rhs.displayTextRangeEnd).append(source, rhs.source).append(inReplyToStatusId, rhs.inReplyToStatusId).append(inReplyToUserId, rhs.inReplyToUserId).append(favoriteCount, rhs.favoriteCount).append(inReplyToScreenName, rhs.inReplyToScreenName).append(geoLocation, rhs.geoLocation).append(place, rhs.place).append(retweetCount, rhs.retweetCount).append(lang, rhs.lang).append(retweetedStatus, rhs.retweetedStatus).append(userMentionEntities, rhs.userMentionEntities).append(hashtagEntities, rhs.hashtagEntities).append(mediaEntities, rhs.mediaEntities).append(symbolEntities, rhs.symbolEntities).append(currentUserRetweetId, rhs.currentUserRetweetId).append(scopes, rhs.scopes).append(user, rhs.user).append(withheldInCountries, rhs.withheldInCountries).append(quotedStatus, rhs.quotedStatus).append(quotedStatusId, rhs.quotedStatusId).append(truncated, rhs.truncated).append(favorited, rhs.favorited).append(retweeted, rhs.retweeted).append(retweet, rhs.retweet).append(contributors, rhs.contributors).append(retweetedByMe, rhs.retweetedByMe).append(possiblySensitive, rhs.possiblySensitive).append(urlentities, rhs.urlentities).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
@@ -196,7 +198,7 @@ public class RetweetedStatus {
     }
 
     @JsonProperty("id")
-    public Integer getId() {
+	public Long getId() {
         return id;
     }
 
@@ -381,7 +383,7 @@ public class RetweetedStatus {
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

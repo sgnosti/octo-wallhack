@@ -72,7 +72,7 @@ public class QuotedStatus_ {
     @JsonProperty("geo")
     private Object geo;
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
     @JsonProperty("id_str")
     private String idStr;
     @JsonProperty("in_reply_to_screen_name")
@@ -174,7 +174,7 @@ public class QuotedStatus_ {
     }
 
     @JsonProperty("id")
-    public Integer getId() {
+	public Long getId() {
         return id;
     }
 
@@ -319,7 +319,7 @@ public class QuotedStatus_ {
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

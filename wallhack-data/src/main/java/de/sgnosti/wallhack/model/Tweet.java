@@ -80,7 +80,7 @@ public class Tweet {
     @JsonProperty("hashtagEntities")
 	private List<HashtagEntity> hashtagEntities = new ArrayList<HashtagEntity>();
     @JsonProperty("id")
-    private Integer id;
+	private Long id;
     @JsonProperty("inReplyToScreenName")
     private Object inReplyToScreenName;
     @JsonProperty("inReplyToStatusId")
@@ -198,7 +198,7 @@ public class Tweet {
     }
 
     @JsonProperty("id")
-    public Integer getId() {
+	public Long getId() {
         return id;
     }
 
@@ -383,7 +383,7 @@ public class Tweet {
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+	public void setId(Long id) {
         this.id = id;
     }
 

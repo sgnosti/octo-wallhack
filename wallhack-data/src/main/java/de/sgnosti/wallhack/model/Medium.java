@@ -5,15 +5,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -31,13 +33,13 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class Medium {
 
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonProperty("display_url")
     private String displayUrl;
     @JsonProperty("expanded_url")
     private String expandedUrl;
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
     @JsonProperty("id_str")
     private String idStr;
     @JsonProperty("indices")
@@ -61,7 +63,7 @@ public class Medium {
         if ((other instanceof Medium) == false) {
             return false;
         }
-        Medium rhs = ((Medium) other);
+        final Medium rhs = ((Medium) other);
         return new EqualsBuilder().append(displayUrl, rhs.displayUrl).append(indices, rhs.indices).append(sizes, rhs.sizes).append(idStr, rhs.idStr).append(expandedUrl, rhs.expandedUrl).append(mediaUrlHttps, rhs.mediaUrlHttps).append(id, rhs.id).append(type, rhs.type).append(mediaUrl, rhs.mediaUrl).append(url, rhs.url).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
@@ -81,7 +83,7 @@ public class Medium {
     }
 
     @JsonProperty("id")
-    public Integer getId() {
+	public Long getId() {
         return id;
     }
 
@@ -141,7 +143,7 @@ public class Medium {
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

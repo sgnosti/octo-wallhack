@@ -5,15 +5,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -26,9 +28,9 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class UserMention {
 
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
     @JsonProperty("id_str")
     private String idStr;
     @JsonProperty("indices")
@@ -46,7 +48,7 @@ public class UserMention {
         if ((other instanceof UserMention) == false) {
             return false;
         }
-        UserMention rhs = ((UserMention) other);
+        final UserMention rhs = ((UserMention) other);
         return new EqualsBuilder().append(indices, rhs.indices).append(screenName, rhs.screenName).append(idStr, rhs.idStr).append(name, rhs.name).append(id, rhs.id).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
@@ -56,7 +58,7 @@ public class UserMention {
     }
 
     @JsonProperty("id")
-    public Integer getId() {
+	public Long getId() {
         return id;
     }
 
@@ -91,7 +93,7 @@ public class UserMention {
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

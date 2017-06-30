@@ -5,15 +5,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -48,7 +50,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class QuotedStatus {
 
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonProperty("contributors")
     private Object contributors;
     @JsonProperty("coordinates")
@@ -70,7 +72,7 @@ public class QuotedStatus {
     @JsonProperty("geo")
     private Object geo;
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
     @JsonProperty("id_str")
     private String idStr;
     @JsonProperty("in_reply_to_screen_name")
@@ -112,7 +114,7 @@ public class QuotedStatus {
         if ((other instanceof QuotedStatus) == false) {
             return false;
         }
-        QuotedStatus rhs = ((QuotedStatus) other);
+        final QuotedStatus rhs = ((QuotedStatus) other);
         return new EqualsBuilder().append(extendedEntities, rhs.extendedEntities).append(inReplyToStatusIdStr, rhs.inReplyToStatusIdStr).append(inReplyToStatusId, rhs.inReplyToStatusId).append(createdAt, rhs.createdAt).append(inReplyToUserIdStr, rhs.inReplyToUserIdStr).append(source, rhs.source).append(retweetCount, rhs.retweetCount).append(retweeted, rhs.retweeted).append(geo, rhs.geo).append(filterLevel, rhs.filterLevel).append(inReplyToScreenName, rhs.inReplyToScreenName).append(isQuoteStatus, rhs.isQuoteStatus).append(idStr, rhs.idStr).append(inReplyToUserId, rhs.inReplyToUserId).append(favoriteCount, rhs.favoriteCount).append(id, rhs.id).append(text, rhs.text).append(place, rhs.place).append(lang, rhs.lang).append(favorited, rhs.favorited).append(possiblySensitive, rhs.possiblySensitive).append(coordinates, rhs.coordinates).append(truncated, rhs.truncated).append(entities, rhs.entities).append(displayTextRange, rhs.displayTextRange).append(contributors, rhs.contributors).append(user, rhs.user).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
@@ -172,7 +174,7 @@ public class QuotedStatus {
     }
 
     @JsonProperty("id")
-    public Integer getId() {
+	public Long getId() {
         return id;
     }
 
@@ -317,7 +319,7 @@ public class QuotedStatus {
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

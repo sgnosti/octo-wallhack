@@ -54,7 +54,7 @@ public class User {
 	@JsonProperty("geoEnabled")
 	private Boolean geoEnabled;
 	@JsonProperty("id")
-	private Integer id;
+	private Long id;
     @JsonProperty("lang")
     private String lang;
     @JsonProperty("listedCount")
@@ -258,7 +258,7 @@ public class User {
     }
 
 	@JsonProperty("id")
-	public Integer getId() {
+	public Long getId() {
 		return id;
     }
 
@@ -552,7 +552,7 @@ public class User {
     }
 
 	@JsonProperty("id")
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
     }
 

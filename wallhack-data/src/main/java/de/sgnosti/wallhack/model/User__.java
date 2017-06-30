@@ -3,15 +3,17 @@ package de.sgnosti.wallhack.model;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -59,7 +61,7 @@ public class User__ {
     @JsonProperty("protected")
     private Boolean _protected;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonProperty("contributors_enabled")
     private Boolean contributorsEnabled;
     @JsonProperty("created_at")
@@ -83,7 +85,7 @@ public class User__ {
     @JsonProperty("geo_enabled")
     private Boolean geoEnabled;
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
     @JsonProperty("id_str")
     private String idStr;
     @JsonProperty("is_translator")
@@ -143,7 +145,7 @@ public class User__ {
         if ((other instanceof User__) == false) {
             return false;
         }
-        User__ rhs = ((User__) other);
+        final User__ rhs = ((User__) other);
         return new EqualsBuilder().append(utcOffset, rhs.utcOffset).append(friendsCount, rhs.friendsCount).append(profileImageUrlHttps, rhs.profileImageUrlHttps).append(listedCount, rhs.listedCount).append(profileBackgroundImageUrl, rhs.profileBackgroundImageUrl).append(defaultProfileImage, rhs.defaultProfileImage).append(favouritesCount, rhs.favouritesCount).append(description, rhs.description).append(createdAt, rhs.createdAt).append(isTranslator, rhs.isTranslator).append(profileBackgroundImageUrlHttps, rhs.profileBackgroundImageUrlHttps).append(_protected, rhs._protected).append(screenName, rhs.screenName).append(idStr, rhs.idStr).append(profileLinkColor, rhs.profileLinkColor).append(id, rhs.id).append(geoEnabled, rhs.geoEnabled).append(profileBackgroundColor, rhs.profileBackgroundColor).append(lang, rhs.lang).append(profileSidebarBorderColor, rhs.profileSidebarBorderColor).append(profileTextColor, rhs.profileTextColor).append(verified, rhs.verified).append(profileImageUrl, rhs.profileImageUrl).append(timeZone, rhs.timeZone).append(url, rhs.url).append(contributorsEnabled, rhs.contributorsEnabled).append(profileBackgroundTile, rhs.profileBackgroundTile).append(profileBannerUrl, rhs.profileBannerUrl).append(statusesCount, rhs.statusesCount).append(followRequestSent, rhs.followRequestSent).append(followersCount, rhs.followersCount).append(profileUseBackgroundImage, rhs.profileUseBackgroundImage).append(defaultProfile, rhs.defaultProfile).append(following, rhs.following).append(name, rhs.name).append(location, rhs.location).append(profileSidebarFillColor, rhs.profileSidebarFillColor).append(notifications, rhs.notifications).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
@@ -208,7 +210,7 @@ public class User__ {
     }
 
     @JsonProperty("id")
-    public Integer getId() {
+	public Long getId() {
         return id;
     }
 
@@ -408,7 +410,7 @@ public class User__ {
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -85,7 +85,7 @@ public class User_2 {
     @JsonProperty("geo_enabled")
     private Boolean geoEnabled;
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
     @JsonProperty("id_str")
     private String idStr;
     @JsonProperty("is_translator")
@@ -210,7 +210,7 @@ public class User_2 {
     }
 
     @JsonProperty("id")
-    public Integer getId() {
+	public Long getId() {
         return id;
     }
 
@@ -410,7 +410,7 @@ public class User_2 {
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
