@@ -23,64 +23,14 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 })
 public class ExtendedTweet {
 
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    @JsonProperty("display_text_range")
+    private List<Integer> displayTextRange = new ArrayList<Integer>();
     @JsonProperty("entities")
     private Entities_ entities;
     @JsonProperty("full_text")
     private String fullText;
-    @JsonProperty("display_text_range")
-    private List<Integer> displayTextRange = new ArrayList<Integer>();
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    @JsonProperty("entities")
-    public Entities_ getEntities() {
-        return entities;
-    }
-
-    @JsonProperty("entities")
-    public void setEntities(Entities_ entities) {
-        this.entities = entities;
-    }
-
-    @JsonProperty("full_text")
-    public String getFullText() {
-        return fullText;
-    }
-
-    @JsonProperty("full_text")
-    public void setFullText(String fullText) {
-        this.fullText = fullText;
-    }
-
-    @JsonProperty("display_text_range")
-    public List<Integer> getDisplayTextRange() {
-        return displayTextRange;
-    }
-
-    @JsonProperty("display_text_range")
-    public void setDisplayTextRange(List<Integer> displayTextRange) {
-        this.displayTextRange = displayTextRange;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(entities).append(fullText).append(displayTextRange).append(additionalProperties).toHashCode();
-    }
 
     @Override
     public boolean equals(Object other) {
@@ -92,6 +42,56 @@ public class ExtendedTweet {
         }
         ExtendedTweet rhs = ((ExtendedTweet) other);
         return new EqualsBuilder().append(entities, rhs.entities).append(fullText, rhs.fullText).append(displayTextRange, rhs.displayTextRange).append(additionalProperties, rhs.additionalProperties).isEquals();
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonProperty("display_text_range")
+    public List<Integer> getDisplayTextRange() {
+        return displayTextRange;
+    }
+
+    @JsonProperty("entities")
+    public Entities_ getEntities() {
+        return entities;
+    }
+
+    @JsonProperty("full_text")
+    public String getFullText() {
+        return fullText;
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(entities).append(fullText).append(displayTextRange).append(additionalProperties).toHashCode();
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    @JsonProperty("display_text_range")
+    public void setDisplayTextRange(List<Integer> displayTextRange) {
+        this.displayTextRange = displayTextRange;
+    }
+
+    @JsonProperty("entities")
+    public void setEntities(Entities_ entities) {
+        this.entities = entities;
+    }
+
+    @JsonProperty("full_text")
+    public void setFullText(String fullText) {
+        this.fullText = fullText;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

@@ -21,64 +21,14 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 })
 public class HashtagEntity_ {
 
-    @JsonProperty("start")
-    private Integer start;
-    @JsonProperty("end")
-    private Integer end;
-    @JsonProperty("text")
-    private String text;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    @JsonProperty("start")
-    public Integer getStart() {
-        return start;
-    }
-
-    @JsonProperty("start")
-    public void setStart(Integer start) {
-        this.start = start;
-    }
-
     @JsonProperty("end")
-    public Integer getEnd() {
-        return end;
-    }
-
-    @JsonProperty("end")
-    public void setEnd(Integer end) {
-        this.end = end;
-    }
-
+    private Integer end;
+    @JsonProperty("start")
+    private Integer start;
     @JsonProperty("text")
-    public String getText() {
-        return text;
-    }
-
-    @JsonProperty("text")
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(start).append(end).append(text).append(additionalProperties).toHashCode();
-    }
+    private String text;
 
     @Override
     public boolean equals(Object other) {
@@ -90,6 +40,56 @@ public class HashtagEntity_ {
         }
         HashtagEntity_ rhs = ((HashtagEntity_) other);
         return new EqualsBuilder().append(start, rhs.start).append(end, rhs.end).append(text, rhs.text).append(additionalProperties, rhs.additionalProperties).isEquals();
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonProperty("end")
+    public Integer getEnd() {
+        return end;
+    }
+
+    @JsonProperty("start")
+    public Integer getStart() {
+        return start;
+    }
+
+    @JsonProperty("text")
+    public String getText() {
+        return text;
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(start).append(end).append(text).append(additionalProperties).toHashCode();
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    @JsonProperty("end")
+    public void setEnd(Integer end) {
+        this.end = end;
+    }
+
+    @JsonProperty("start")
+    public void setStart(Integer start) {
+        this.start = start;
+    }
+
+    @JsonProperty("text")
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

@@ -30,148 +30,28 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 })
 public class Medium____ {
 
-    @JsonProperty("display_url")
-    private String displayUrl;
-    @JsonProperty("indices")
-    private List<Integer> indices = new ArrayList<Integer>();
-    @JsonProperty("sizes")
-    private Sizes__ sizes;
-    @JsonProperty("id_str")
-    private String idStr;
-    @JsonProperty("expanded_url")
-    private String expandedUrl;
-    @JsonProperty("media_url_https")
-    private String mediaUrlHttps;
-    @JsonProperty("id")
-    private Integer id;
-    @JsonProperty("type")
-    private String type;
-    @JsonProperty("media_url")
-    private String mediaUrl;
-    @JsonProperty("url")
-    private String url;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
     @JsonProperty("display_url")
-    public String getDisplayUrl() {
-        return displayUrl;
-    }
-
-    @JsonProperty("display_url")
-    public void setDisplayUrl(String displayUrl) {
-        this.displayUrl = displayUrl;
-    }
-
-    @JsonProperty("indices")
-    public List<Integer> getIndices() {
-        return indices;
-    }
-
-    @JsonProperty("indices")
-    public void setIndices(List<Integer> indices) {
-        this.indices = indices;
-    }
-
-    @JsonProperty("sizes")
-    public Sizes__ getSizes() {
-        return sizes;
-    }
-
-    @JsonProperty("sizes")
-    public void setSizes(Sizes__ sizes) {
-        this.sizes = sizes;
-    }
-
-    @JsonProperty("id_str")
-    public String getIdStr() {
-        return idStr;
-    }
-
-    @JsonProperty("id_str")
-    public void setIdStr(String idStr) {
-        this.idStr = idStr;
-    }
-
+    private String displayUrl;
     @JsonProperty("expanded_url")
-    public String getExpandedUrl() {
-        return expandedUrl;
-    }
-
-    @JsonProperty("expanded_url")
-    public void setExpandedUrl(String expandedUrl) {
-        this.expandedUrl = expandedUrl;
-    }
-
-    @JsonProperty("media_url_https")
-    public String getMediaUrlHttps() {
-        return mediaUrlHttps;
-    }
-
-    @JsonProperty("media_url_https")
-    public void setMediaUrlHttps(String mediaUrlHttps) {
-        this.mediaUrlHttps = mediaUrlHttps;
-    }
-
+    private String expandedUrl;
     @JsonProperty("id")
-    public Integer getId() {
-        return id;
-    }
-
-    @JsonProperty("id")
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    @JsonProperty("type")
-    public String getType() {
-        return type;
-    }
-
-    @JsonProperty("type")
-    public void setType(String type) {
-        this.type = type;
-    }
-
+    private Integer id;
+    @JsonProperty("id_str")
+    private String idStr;
+    @JsonProperty("indices")
+    private List<Integer> indices = new ArrayList<Integer>();
     @JsonProperty("media_url")
-    public String getMediaUrl() {
-        return mediaUrl;
-    }
-
-    @JsonProperty("media_url")
-    public void setMediaUrl(String mediaUrl) {
-        this.mediaUrl = mediaUrl;
-    }
-
+    private String mediaUrl;
+    @JsonProperty("media_url_https")
+    private String mediaUrlHttps;
+    @JsonProperty("sizes")
+    private Sizes__ sizes;
+    @JsonProperty("type")
+    private String type;
     @JsonProperty("url")
-    public String getUrl() {
-        return url;
-    }
-
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(displayUrl).append(indices).append(sizes).append(idStr).append(expandedUrl).append(mediaUrlHttps).append(id).append(type).append(mediaUrl).append(url).append(additionalProperties).toHashCode();
-    }
+    private String url;
 
     @Override
     public boolean equals(Object other) {
@@ -183,6 +63,126 @@ public class Medium____ {
         }
         Medium____ rhs = ((Medium____) other);
         return new EqualsBuilder().append(displayUrl, rhs.displayUrl).append(indices, rhs.indices).append(sizes, rhs.sizes).append(idStr, rhs.idStr).append(expandedUrl, rhs.expandedUrl).append(mediaUrlHttps, rhs.mediaUrlHttps).append(id, rhs.id).append(type, rhs.type).append(mediaUrl, rhs.mediaUrl).append(url, rhs.url).append(additionalProperties, rhs.additionalProperties).isEquals();
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonProperty("display_url")
+    public String getDisplayUrl() {
+        return displayUrl;
+    }
+
+    @JsonProperty("expanded_url")
+    public String getExpandedUrl() {
+        return expandedUrl;
+    }
+
+    @JsonProperty("id")
+    public Integer getId() {
+        return id;
+    }
+
+    @JsonProperty("id_str")
+    public String getIdStr() {
+        return idStr;
+    }
+
+    @JsonProperty("indices")
+    public List<Integer> getIndices() {
+        return indices;
+    }
+
+    @JsonProperty("media_url")
+    public String getMediaUrl() {
+        return mediaUrl;
+    }
+
+    @JsonProperty("media_url_https")
+    public String getMediaUrlHttps() {
+        return mediaUrlHttps;
+    }
+
+    @JsonProperty("sizes")
+    public Sizes__ getSizes() {
+        return sizes;
+    }
+
+    @JsonProperty("type")
+    public String getType() {
+        return type;
+    }
+
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(displayUrl).append(indices).append(sizes).append(idStr).append(expandedUrl).append(mediaUrlHttps).append(id).append(type).append(mediaUrl).append(url).append(additionalProperties).toHashCode();
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    @JsonProperty("display_url")
+    public void setDisplayUrl(String displayUrl) {
+        this.displayUrl = displayUrl;
+    }
+
+    @JsonProperty("expanded_url")
+    public void setExpandedUrl(String expandedUrl) {
+        this.expandedUrl = expandedUrl;
+    }
+
+    @JsonProperty("id")
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @JsonProperty("id_str")
+    public void setIdStr(String idStr) {
+        this.idStr = idStr;
+    }
+
+    @JsonProperty("indices")
+    public void setIndices(List<Integer> indices) {
+        this.indices = indices;
+    }
+
+    @JsonProperty("media_url")
+    public void setMediaUrl(String mediaUrl) {
+        this.mediaUrl = mediaUrl;
+    }
+
+    @JsonProperty("media_url_https")
+    public void setMediaUrlHttps(String mediaUrlHttps) {
+        this.mediaUrlHttps = mediaUrlHttps;
+    }
+
+    @JsonProperty("sizes")
+    public void setSizes(Sizes__ sizes) {
+        this.sizes = sizes;
+    }
+
+    @JsonProperty("type")
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @JsonProperty("url")
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

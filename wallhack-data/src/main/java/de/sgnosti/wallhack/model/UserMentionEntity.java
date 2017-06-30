@@ -24,100 +24,20 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 })
 public class UserMentionEntity {
 
-    @JsonProperty("start")
-    private Integer start;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonProperty("end")
     private Integer end;
+    @JsonProperty("id")
+    private Integer id;
     @JsonProperty("name")
     private String name;
     @JsonProperty("screenName")
     private String screenName;
-    @JsonProperty("id")
-    private Integer id;
+    @JsonProperty("start")
+    private Integer start;
     @JsonProperty("text")
     private String text;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    @JsonProperty("start")
-    public Integer getStart() {
-        return start;
-    }
-
-    @JsonProperty("start")
-    public void setStart(Integer start) {
-        this.start = start;
-    }
-
-    @JsonProperty("end")
-    public Integer getEnd() {
-        return end;
-    }
-
-    @JsonProperty("end")
-    public void setEnd(Integer end) {
-        this.end = end;
-    }
-
-    @JsonProperty("name")
-    public String getName() {
-        return name;
-    }
-
-    @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @JsonProperty("screenName")
-    public String getScreenName() {
-        return screenName;
-    }
-
-    @JsonProperty("screenName")
-    public void setScreenName(String screenName) {
-        this.screenName = screenName;
-    }
-
-    @JsonProperty("id")
-    public Integer getId() {
-        return id;
-    }
-
-    @JsonProperty("id")
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    @JsonProperty("text")
-    public String getText() {
-        return text;
-    }
-
-    @JsonProperty("text")
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(start).append(end).append(name).append(screenName).append(id).append(text).append(additionalProperties).toHashCode();
-    }
 
     @Override
     public boolean equals(Object other) {
@@ -129,6 +49,86 @@ public class UserMentionEntity {
         }
         UserMentionEntity rhs = ((UserMentionEntity) other);
         return new EqualsBuilder().append(start, rhs.start).append(end, rhs.end).append(name, rhs.name).append(screenName, rhs.screenName).append(id, rhs.id).append(text, rhs.text).append(additionalProperties, rhs.additionalProperties).isEquals();
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonProperty("end")
+    public Integer getEnd() {
+        return end;
+    }
+
+    @JsonProperty("id")
+    public Integer getId() {
+        return id;
+    }
+
+    @JsonProperty("name")
+    public String getName() {
+        return name;
+    }
+
+    @JsonProperty("screenName")
+    public String getScreenName() {
+        return screenName;
+    }
+
+    @JsonProperty("start")
+    public Integer getStart() {
+        return start;
+    }
+
+    @JsonProperty("text")
+    public String getText() {
+        return text;
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(start).append(end).append(name).append(screenName).append(id).append(text).append(additionalProperties).toHashCode();
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    @JsonProperty("end")
+    public void setEnd(Integer end) {
+        this.end = end;
+    }
+
+    @JsonProperty("id")
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @JsonProperty("screenName")
+    public void setScreenName(String screenName) {
+        this.screenName = screenName;
+    }
+
+    @JsonProperty("start")
+    public void setStart(Integer start) {
+        this.start = start;
+    }
+
+    @JsonProperty("text")
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

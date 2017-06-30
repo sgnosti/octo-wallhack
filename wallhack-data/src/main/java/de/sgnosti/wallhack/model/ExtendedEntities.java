@@ -21,40 +21,10 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 })
 public class ExtendedEntities {
 
-    @JsonProperty("media")
-    private List<Medium> media = new ArrayList<Medium>();
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
     @JsonProperty("media")
-    public List<Medium> getMedia() {
-        return media;
-    }
-
-    @JsonProperty("media")
-    public void setMedia(List<Medium> media) {
-        this.media = media;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(media).append(additionalProperties).toHashCode();
-    }
+    private List<Medium> media = new ArrayList<Medium>();
 
     @Override
     public boolean equals(Object other) {
@@ -66,6 +36,36 @@ public class ExtendedEntities {
         }
         ExtendedEntities rhs = ((ExtendedEntities) other);
         return new EqualsBuilder().append(media, rhs.media).append(additionalProperties, rhs.additionalProperties).isEquals();
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonProperty("media")
+    public List<Medium> getMedia() {
+        return media;
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(media).append(additionalProperties).toHashCode();
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    @JsonProperty("media")
+    public void setMedia(List<Medium> media) {
+        this.media = media;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

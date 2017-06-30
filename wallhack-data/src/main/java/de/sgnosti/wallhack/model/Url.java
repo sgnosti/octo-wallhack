@@ -24,76 +24,16 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 })
 public class Url {
 
-    @JsonProperty("display_url")
-    private String displayUrl;
-    @JsonProperty("indices")
-    private List<Integer> indices = new ArrayList<Integer>();
-    @JsonProperty("expanded_url")
-    private String expandedUrl;
-    @JsonProperty("url")
-    private String url;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
     @JsonProperty("display_url")
-    public String getDisplayUrl() {
-        return displayUrl;
-    }
-
-    @JsonProperty("display_url")
-    public void setDisplayUrl(String displayUrl) {
-        this.displayUrl = displayUrl;
-    }
-
-    @JsonProperty("indices")
-    public List<Integer> getIndices() {
-        return indices;
-    }
-
-    @JsonProperty("indices")
-    public void setIndices(List<Integer> indices) {
-        this.indices = indices;
-    }
-
+    private String displayUrl;
     @JsonProperty("expanded_url")
-    public String getExpandedUrl() {
-        return expandedUrl;
-    }
-
-    @JsonProperty("expanded_url")
-    public void setExpandedUrl(String expandedUrl) {
-        this.expandedUrl = expandedUrl;
-    }
-
+    private String expandedUrl;
+    @JsonProperty("indices")
+    private List<Integer> indices = new ArrayList<Integer>();
     @JsonProperty("url")
-    public String getUrl() {
-        return url;
-    }
-
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(displayUrl).append(indices).append(expandedUrl).append(url).append(additionalProperties).toHashCode();
-    }
+    private String url;
 
     @Override
     public boolean equals(Object other) {
@@ -105,6 +45,66 @@ public class Url {
         }
         Url rhs = ((Url) other);
         return new EqualsBuilder().append(displayUrl, rhs.displayUrl).append(indices, rhs.indices).append(expandedUrl, rhs.expandedUrl).append(url, rhs.url).append(additionalProperties, rhs.additionalProperties).isEquals();
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonProperty("display_url")
+    public String getDisplayUrl() {
+        return displayUrl;
+    }
+
+    @JsonProperty("expanded_url")
+    public String getExpandedUrl() {
+        return expandedUrl;
+    }
+
+    @JsonProperty("indices")
+    public List<Integer> getIndices() {
+        return indices;
+    }
+
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(displayUrl).append(indices).append(expandedUrl).append(url).append(additionalProperties).toHashCode();
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    @JsonProperty("display_url")
+    public void setDisplayUrl(String displayUrl) {
+        this.displayUrl = displayUrl;
+    }
+
+    @JsonProperty("expanded_url")
+    public void setExpandedUrl(String expandedUrl) {
+        this.expandedUrl = expandedUrl;
+    }
+
+    @JsonProperty("indices")
+    public void setIndices(List<Integer> indices) {
+        this.indices = indices;
+    }
+
+    @JsonProperty("url")
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

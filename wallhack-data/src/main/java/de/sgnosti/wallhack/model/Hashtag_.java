@@ -22,52 +22,12 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 })
 public class Hashtag_ {
 
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonProperty("indices")
     private List<Integer> indices = new ArrayList<Integer>();
     @JsonProperty("text")
     private String text;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    @JsonProperty("indices")
-    public List<Integer> getIndices() {
-        return indices;
-    }
-
-    @JsonProperty("indices")
-    public void setIndices(List<Integer> indices) {
-        this.indices = indices;
-    }
-
-    @JsonProperty("text")
-    public String getText() {
-        return text;
-    }
-
-    @JsonProperty("text")
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(indices).append(text).append(additionalProperties).toHashCode();
-    }
 
     @Override
     public boolean equals(Object other) {
@@ -79,6 +39,46 @@ public class Hashtag_ {
         }
         Hashtag_ rhs = ((Hashtag_) other);
         return new EqualsBuilder().append(indices, rhs.indices).append(text, rhs.text).append(additionalProperties, rhs.additionalProperties).isEquals();
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonProperty("indices")
+    public List<Integer> getIndices() {
+        return indices;
+    }
+
+    @JsonProperty("text")
+    public String getText() {
+        return text;
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(indices).append(text).append(additionalProperties).toHashCode();
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    @JsonProperty("indices")
+    public void setIndices(List<Integer> indices) {
+        this.indices = indices;
+    }
+
+    @JsonProperty("text")
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

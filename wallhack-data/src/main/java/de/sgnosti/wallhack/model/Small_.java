@@ -21,64 +21,14 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 })
 public class Small_ {
 
-    @JsonProperty("w")
-    private Integer w;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonProperty("h")
     private Integer h;
     @JsonProperty("resize")
     private String resize;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
     @JsonProperty("w")
-    public Integer getW() {
-        return w;
-    }
-
-    @JsonProperty("w")
-    public void setW(Integer w) {
-        this.w = w;
-    }
-
-    @JsonProperty("h")
-    public Integer getH() {
-        return h;
-    }
-
-    @JsonProperty("h")
-    public void setH(Integer h) {
-        this.h = h;
-    }
-
-    @JsonProperty("resize")
-    public String getResize() {
-        return resize;
-    }
-
-    @JsonProperty("resize")
-    public void setResize(String resize) {
-        this.resize = resize;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(w).append(h).append(resize).append(additionalProperties).toHashCode();
-    }
+    private Integer w;
 
     @Override
     public boolean equals(Object other) {
@@ -90,6 +40,56 @@ public class Small_ {
         }
         Small_ rhs = ((Small_) other);
         return new EqualsBuilder().append(w, rhs.w).append(h, rhs.h).append(resize, rhs.resize).append(additionalProperties, rhs.additionalProperties).isEquals();
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonProperty("h")
+    public Integer getH() {
+        return h;
+    }
+
+    @JsonProperty("resize")
+    public String getResize() {
+        return resize;
+    }
+
+    @JsonProperty("w")
+    public Integer getW() {
+        return w;
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(w).append(h).append(resize).append(additionalProperties).toHashCode();
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    @JsonProperty("h")
+    public void setH(Integer h) {
+        this.h = h;
+    }
+
+    @JsonProperty("resize")
+    public void setResize(String resize) {
+        this.resize = resize;
+    }
+
+    @JsonProperty("w")
+    public void setW(Integer w) {
+        this.w = w;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }
