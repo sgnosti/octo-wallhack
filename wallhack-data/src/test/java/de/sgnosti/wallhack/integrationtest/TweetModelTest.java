@@ -42,22 +42,6 @@ public class TweetModelTest {
 	}
 
 	@Test
-	public void firstExampleWithSecondObjectTypeDoesNotWork() throws Exception {
-		final ObjectMapper objectMapper = new ObjectMapper();
-		final Tweet2 tweet = objectMapper.readValue(camelCaseExample, Tweet2.class);
-		assertNotNull(tweet.getId());
-		// TODO: what is missing?
-	}
-
-	@Test
-	public void secondExampleWithFirstObjectTypeDoesNotWork() throws Exception {
-		final ObjectMapper objectMapper = new ObjectMapper();
-		final Tweet tweet = objectMapper.readValue(snakeCaseExample, Tweet.class);
-		assertNotNull(tweet.getId());
-		// TODO: what is missing?
-	}
-
-	@Test
 	public void comparisonOnFirstTweet() throws Exception {
 		final ObjectMapper objectMapper = new ObjectMapper();
 		final Tweet tweet = objectMapper.readValue(camelCaseExample, Tweet.class);
@@ -69,8 +53,8 @@ public class TweetModelTest {
 	@Test
 	public void comparisonOnSecondTweet() throws Exception {
 		final ObjectMapper objectMapper = new ObjectMapper();
-		final Tweet2 tweet = objectMapper.readValue(snakeCaseExample, Tweet2.class);
-		final String s = objectMapper.writeValueAsString(objectMapper.readValue(snakeCaseExample, Tweet.class));
+		final Tweet tweet = objectMapper.readValue(snakeCaseExample, Tweet.class);
+		final String s = objectMapper.writeValueAsString(objectMapper.readValue(snakeCaseExample, Tweet2.class));
 		final Tweet tweet2 = objectMapper.readValue(s, Tweet.class);
 		assertEquals(tweet, tweet2);
 	}

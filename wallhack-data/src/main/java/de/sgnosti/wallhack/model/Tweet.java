@@ -1,6 +1,8 @@
 
 package de.sgnosti.wallhack.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -57,6 +59,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "urlentities"
 })
 public class Tweet {
+	private static final String DATE_FORMAT = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
 
     @JsonProperty("accessLevel")
     private Integer accessLevel;
@@ -333,6 +336,11 @@ public class Tweet {
         this.accessLevel = accessLevel;
     }
 
+	@JsonProperty("access_level")
+	public void alternativeSetAccessLevel(Integer accessLevel) {
+		this.accessLevel = accessLevel;
+	}
+
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
@@ -348,10 +356,21 @@ public class Tweet {
         this.createdAt = createdAt;
     }
 
+	@JsonProperty("created_at")
+	public void alterativeSetCreatedAt(String createdAt) throws ParseException {
+		final SimpleDateFormat sf = new SimpleDateFormat(DATE_FORMAT);
+		this.createdAt = sf.parse(createdAt).getTime();
+	}
+
     @JsonProperty("currentUserRetweetId")
     public void setCurrentUserRetweetId(Long currentUserRetweetId) {
         this.currentUserRetweetId = currentUserRetweetId;
     }
+
+	@JsonProperty("current_user_retweet_id")
+	public void alterativeSetCurrentUserRetweetId(Long currentUserRetweetId) {
+		this.currentUserRetweetId = currentUserRetweetId;
+	}
 
     @JsonProperty("displayTextRangeEnd")
     public void setDisplayTextRangeEnd(Integer displayTextRangeEnd) {
@@ -378,9 +397,14 @@ public class Tweet {
         this.geoLocation = geoLocation;
     }
 
+	@JsonProperty("geo")
+	public void alterativeSetGeoLocation(Object geoLocation) {
+		this.geoLocation = geoLocation;
+	}
+
     @JsonProperty("hashtagEntities")
 	public void setHashtagEntities(List<HashtagEntity> hashtagEntities) {
-        this.hashtagEntities = hashtagEntities;
+		this.hashtagEntities = hashtagEntities;
     }
 
     @JsonProperty("id")
@@ -393,15 +417,30 @@ public class Tweet {
         this.inReplyToScreenName = inReplyToScreenName;
     }
 
+	@JsonProperty("in_reply_to_screen_name")
+	public void alterativeSetInReplyToScreenName(Object inReplyToScreenName) {
+		this.inReplyToScreenName = inReplyToScreenName;
+	}
+
     @JsonProperty("inReplyToStatusId")
     public void setInReplyToStatusId(Long inReplyToStatusId) {
         this.inReplyToStatusId = inReplyToStatusId;
     }
 
+	@JsonProperty("in_reply_to_status_id")
+	public void alterativeSetInReplyToStatusId(Long inReplyToStatusId) {
+		this.inReplyToStatusId = inReplyToStatusId;
+	}
+
     @JsonProperty("inReplyToUserId")
     public void setInReplyToUserId(Long inReplyToUserId) {
         this.inReplyToUserId = inReplyToUserId;
     }
+
+	@JsonProperty("in_reply_to_user_id")
+	public void alterativeSetInReplyToUserId(Long inReplyToUserId) {
+		this.inReplyToUserId = inReplyToUserId;
+	}
 
     @JsonProperty("lang")
     public void setLang(String lang) {
@@ -428,10 +467,20 @@ public class Tweet {
         this.quotedStatus = quotedStatus;
     }
 
+	@JsonProperty("quoted_status")
+	public void alterativeSetQuotedStatus(Object quotedStatus) {
+		this.quotedStatus = quotedStatus;
+	}
+
     @JsonProperty("quotedStatusId")
     public void setQuotedStatusId(Long quotedStatusId) {
         this.quotedStatusId = quotedStatusId;
     }
+
+	@JsonProperty("quoted_status_id")
+	public void alterativeSetQuotedStatusId(Long quotedStatusId) {
+		this.quotedStatusId = quotedStatusId;
+	}
 
     @JsonProperty("rateLimitStatus")
     public void setRateLimitStatus(Object rateLimitStatus) {
@@ -448,6 +497,11 @@ public class Tweet {
         this.retweetCount = retweetCount;
     }
 
+	@JsonProperty("retweet_count")
+	public void alterativeSetRetweetCount(Integer retweetCount) {
+		this.retweetCount = retweetCount;
+	}
+
     @JsonProperty("retweeted")
     public void setRetweeted(Boolean retweeted) {
         this.retweeted = retweeted;
@@ -462,6 +516,11 @@ public class Tweet {
     public void setRetweetedStatus(RetweetedStatus retweetedStatus) {
         this.retweetedStatus = retweetedStatus;
     }
+
+	@JsonProperty("retweeted_status")
+	public void alterativeSetRetweetedStatus(RetweetedStatus retweetedStatus) {
+		this.retweetedStatus = retweetedStatus;
+	}
 
     @JsonProperty("scopes")
     public void setScopes(Object scopes) {
