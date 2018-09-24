@@ -1,7 +1,5 @@
 package de.sgnosti.wallhack.reader;
 
-import static org.junit.Assert.*;
-
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.concurrent.BlockingQueue;
@@ -13,8 +11,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import org.junit.Before;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,20 +44,6 @@ public class TwitterSource {
 
 	private final AtomicBoolean closed = new AtomicBoolean();
 
-	@Before
-	public void setUp() {
-
-	}
-
-	@Test
-	public void connectionCanBeEstablished() throws InterruptedException {
-
-		final Event event = eventQueue.poll(10, TimeUnit.SECONDS);
-		assertNotNull(event);
-		LOGGER.debug("Got event of type {} with message {}", event.getEventType(), event.getMessage());
-
-		hosebirdClient.stop();
-	}
 
 	public TwitterSource(WallhackDataConfiguration config, KafkaProducer<String, String> kafkaProducer) {
 		this.config = config;

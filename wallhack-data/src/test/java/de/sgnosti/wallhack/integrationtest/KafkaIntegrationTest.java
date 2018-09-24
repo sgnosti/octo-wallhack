@@ -16,6 +16,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,8 +60,8 @@ public class KafkaIntegrationTest {
 	public void producerWritesConsumerReads() throws Exception {
 		final ProducerRecord<String, String> producerRecord = new ProducerRecord<String, String>(TOPIC, KEY, VALUE);
 		final Future<RecordMetadata> result = kafkaProducer.send(producerRecord);
-		assertNotNull(result.get(1000, TimeUnit.MILLISECONDS));
-		final RecordMetadata recordMetadata = result.get();
+		final RecordMetadata recordMetadata = result.get(1000, TimeUnit.MILLISECONDS);
+		assertNotNull(recordMetadata);
 		LOGGER.debug("Sending record returned {}", toString(recordMetadata));
 		final ConsumerRecords<String, String> consumerRecords = kafkaConsumer.poll(1000);
 		assertEquals(1, consumerRecords.count());
@@ -75,7 +76,7 @@ public class KafkaIntegrationTest {
 		assertEquals(VALUE, consumerRecord.value());
 	}
 
-	@Test
+	@Ignore
 	public void secondConsumerReadsAllMessages() {
 		properties.put("group.id", "anotherGroup");
 		final KafkaConsumer<String, String> anotherKafkaConsumer = new KafkaConsumer<>(properties);
@@ -87,9 +88,9 @@ public class KafkaIntegrationTest {
 
 	@After
 	public void tearDown() {
-		kafkaProducer.close();
+		kafkaProducer.close(200, TimeUnit.MILLISECONDS);
 		kafkaConsumer.wakeup();
-		kafkaConsumer.close();
+		kafkaConsumer.close(200, TimeUnit.MILLISECONDS);
 	}
 
 	private String toString(RecordMetadata recordMetadata) {
