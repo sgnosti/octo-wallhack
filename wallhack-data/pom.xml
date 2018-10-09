@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.sgnosti.wallhack</groupId>
+	<artifactId>wallhack-data</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>wallhack-data</name>
+
+    <parent>
+      <groupId>de.sgnosti.wallhack</groupId>
+      <artifactId>octo-wallhack</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+	<dependencies>
+      
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+      
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+        </dependency>
+        
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+        </dependency>
+		
+		<dependency>
+          <groupId>com.datastax.cassandra</groupId>
+          <artifactId>cassandra-driver-core</artifactId>
+      </dependency>
+		
+		<dependency>
+		    <groupId>org.apache.kafka</groupId>
+		    <artifactId>kafka_2.11</artifactId>
+		    <exclusions>
+		      <exclusion>
+		        <groupId>org.slf4j</groupId>
+		        <artifactId>slf4j-log4j12</artifactId>
+		      </exclusion>
+		    </exclusions>
+		</dependency>
+    
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-configuration2</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+        </dependency>      
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+      
+      <!-- Twitter Stream API -->
+      <dependency>
+        <groupId>com.twitter</groupId>
+        <artifactId>hbc-core</artifactId>
+      </dependency>
+      
+      <dependency>
+          <groupId>org.json</groupId>
+          <artifactId>json</artifactId>
+      </dependency>
+
+      
+      
+    </dependencies>
+
+</project>

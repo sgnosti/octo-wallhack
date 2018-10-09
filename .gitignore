@@ -32,5 +32,31 @@ bin/
 gradle/
 gradlew*
 
-# Idea delopment environment
-.idea/
+
+# eclipse config files
+**/.project
+**/.classpath
+**/.settings/
+
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+# twitter credentials
+twitter4j.properties
+
+.DS_Store
+*.a
