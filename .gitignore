@@ -31,7 +31,7 @@ bin/
 .gradle
 gradle/
 gradlew*
-
+build/
 
 # eclipse config files
 **/.project
