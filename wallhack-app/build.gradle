@@ -22,7 +22,7 @@ ext {
     jdependVersion = "2.9.1"
     awaitilityVersion = "3.1.2"
     jvmArgumentModuleSystemCompatibility = "--add-opens=java.base/java.lang=ALL-UNNAMED"
-    swaggerVersion = "3.0.0-SNAPSHOT"
+    swaggerVersion = "0.8.3"
 }
 
 repositories {
@@ -45,11 +45,7 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-security"
     implementation "org.javamoney:moneta:1.3"
     implementation "org.zalando:jackson-datatype-money:1.0.2"
-    implementation "io.springfox:springfox-swagger2:${swaggerVersion}"
-    implementation "io.springfox:springfox-swagger-ui:${swaggerVersion}"
-    implementation "io.springfox:springfox-spring-webflux:${swaggerVersion}"
-//    implementation "io.springfox:springfox-data-rest:2.9.2"
-//    implementation "io.springfox:springfox-bean-validators:2.9.2"
+    implementation "io.github.cdimascio:swagger-spring-functional:${swaggerVersion}"
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude module: "junit" // Spring comes with JUnit 4, we're going to use JUnit 5...
