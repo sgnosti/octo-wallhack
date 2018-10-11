@@ -7,5 +7,6 @@ import lombok.Getter;
 @Getter
 @EqualsAndHashCode
 public class Tweet {
-  @ApiModelProperty private String id;
+  private String id;
+  private String userId;
 }
