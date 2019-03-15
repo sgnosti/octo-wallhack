@@ -1,4 +1,5 @@
 
+
 *.class
 
 # Package Files #
@@ -26,6 +27,14 @@ hs_err_pid*
 target/
 bin/
 
+# gradle stuff
+.gradle
+gradle/
+gradlew*
+
+# Idea delopment environment
+.idea/
+
 # eclipse config files
 **/.project
 **/.classpath
@@ -50,4 +59,3 @@ target/
 
 # twitter credentials
 twitter4j.properties
-
